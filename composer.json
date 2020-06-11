@@ -1,0 +1,27 @@
+{
+  "name": "doganoo/di-services",
+  "description": "service classes in the sense of Dependency Injection",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dogan Ucar",
+      "email": "dogan@dogan-ucar.de"
+    }
+  ],
+  "minimum-stability": "beta",
+  "require": {
+    "php": "^7.1",
+    "doganoo/php-algorithms": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "doganoo\\DI\\": "src/public",
+      "doganoo\\DIP\\": "src/private",
+      "doganoo\\DI\\Test\\": "test/"
+    }
+  }
+}
