@@ -12,7 +12,7 @@
   "minimum-stability": "beta",
   "require": {
     "php": "^7.1",
-    "doganoo/php-algorithms": "dev-master"
+    "doganoo/php-algorithms": "^1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "*"
