@@ -15,7 +15,7 @@
     "doganoo/php-algorithms": "^1.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "*"
+    "phpunit/phpunit": "^7.5"
   },
   "autoload": {
     "psr-4": {

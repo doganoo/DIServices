@@ -63,4 +63,17 @@ class DateTimeService implements IDateTimeService {
         return new DateTime($format);
     }
 
+    /**
+     * Returns the number of days between two date times
+     *
+     * @param DateTimeInterface $start The start date
+     * @param DateTimeInterface $end   The end date
+     * @return int
+     */
+    public function getDifference(DateTimeInterface $start, DateTimeInterface $end): int {
+        $interval = $start->diff($end);
+        $days     = $interval->days;
+        return false === $days ? 0 : $days;
+    }
+
 }

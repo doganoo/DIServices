@@ -48,6 +48,20 @@ class DateTimeServiceTest extends TestCase {
     }
 
     /**
+     * @param int $start
+     * @param int $end
+     * @param int $days
+     * @dataProvider getDateTimeDifferences
+     */
+    public function testDateDifference(int $start, int $end, int $days) {
+        $daysCalculated = $this->dateTimeService->getDifference(
+            $this->dateTimeService->toDateTime($start)
+            , $this->dateTimeService->toDateTime($end)
+        );
+        $this->assertTrue($daysCalculated === $days);
+    }
+
+    /**
      * @param string $format
      * @param bool   $isNull
      *
@@ -62,6 +76,31 @@ class DateTimeServiceTest extends TestCase {
             $this->assertTrue($dateTime instanceof DateTimeInterface);
             $this->assertTrue($dateTime->getTimestamp() === strtotime($format));
         }
+    }
+
+    public function getDateTimeDifferences(): array {
+        return [
+            [
+                1592906400
+                , 1592820000
+                , 1
+            ]
+            , [
+                1592906930
+                , 1592906929
+                , 0
+            ]
+            , [
+                1592848105
+                , 1592761704
+                , 1
+            ]
+            , [
+                1592848105
+                , 1592761706
+                , 0
+            ]
+        ];
     }
 
     public function getTimestamps(): array {
@@ -101,7 +140,7 @@ class DateTimeServiceTest extends TestCase {
         ];
     }
 
-    protected function setUp() {
+    protected function setUp(): void {
         parent::setUp();
         $this->dateTimeService = new DateTimeService();
     }

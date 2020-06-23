@@ -43,14 +43,13 @@ class URLServiceTest extends TestCase {
      */
     public function testGetParameterFromUrl(string $url, array $data): void {
         $table = $this->urlService->getParameterFromUrl($url);
-        $array = $table->toArray();
-
+        $keySet = $table->keySet();
         // in order to avoid 'test did not perform any assertions' for empty data provider
         $this->assertInstanceOf(HashTable::class, $table);
 
-        foreach ($data as $key => $value) {
-            $this->assertArrayHasKey($key, $array);
-            $this->assertEquals($value, $array[$key]);
+        foreach ($keySet as $key) {
+            $value = $table->get($key);
+            $this->assertNotNull($value);
         }
 
     }
@@ -79,7 +78,7 @@ class URLServiceTest extends TestCase {
                     , "hl" => "de"
                 ]
             ]
-            , "noHost1"      => [
+            , "noHost1"     => [
                 "?id=com.meisterlabs.mindmeister&hl=de"
                 , [
                     "id"   => "com.meisterlabs.mindmeister"
@@ -89,7 +88,7 @@ class URLServiceTest extends TestCase {
         ];
     }
 
-    protected function setUp() {
+    protected function setUp(): void {
         parent::setUp();
         $this->urlService = new URLService();
     }

@@ -55,4 +55,13 @@ interface IDateTimeService {
      */
     public function fromFormat(string $format): ?DateTimeInterface;
 
+    /**
+     * Returns the number of days between two date times
+     *
+     * @param DateTimeInterface $start The start date
+     * @param DateTimeInterface $end   The end date
+     * @return int
+     */
+    public function getDifference(DateTimeInterface $start, DateTimeInterface $end): int;
+
 }
