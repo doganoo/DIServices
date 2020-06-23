@@ -100,6 +100,11 @@ class DateTimeServiceTest extends TestCase {
                 , 1592761706
                 , 0
             ]
+            , [
+                1592906400
+                , 1592992800
+                , 1
+            ]
         ];
     }
 
