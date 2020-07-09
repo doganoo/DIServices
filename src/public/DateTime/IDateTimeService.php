@@ -60,8 +60,18 @@ interface IDateTimeService {
      *
      * @param DateTimeInterface $start The start date
      * @param DateTimeInterface $end   The end date
+     *
      * @return int
      */
     public function getDifference(DateTimeInterface $start, DateTimeInterface $end): int;
+
+    /**
+     * Converts a date/datetime string to an instance of DateTimeInterface
+     *
+     * @param string $dateTime The dateTime as a string
+     *
+     * @return DateTimeInterface|null
+     */
+    public function fromString(string $dateTime): ?DateTimeInterface;
 
 }
