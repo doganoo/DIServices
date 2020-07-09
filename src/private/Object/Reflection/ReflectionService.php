@@ -1,8 +1,5 @@
 <?php
 declare(strict_types=1);
-
-use doganoo\PHPAlgorithms\Datastructure\Lists\ArrayList\ArrayList;
-
 /**
  *
  * Copyright (C) <2020> <Dogan Ucar>
@@ -20,6 +17,12 @@ use doganoo\PHPAlgorithms\Datastructure\Lists\ArrayList\ArrayList;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+
+namespace doganoo\DIP\Object\Reflection;
+
+use doganoo\DI\Object\Reflection\IReflectionService;
+use doganoo\PHPAlgorithms\Datastructure\Lists\ArrayList\ArrayList;
+
 class ReflectionService implements IReflectionService {
 
     /**

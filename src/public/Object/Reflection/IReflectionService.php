@@ -1,8 +1,5 @@
 <?php
 declare(strict_types=1);
-
-use doganoo\PHPAlgorithms\Datastructure\Lists\ArrayList\ArrayList;
-
 /**
  * Keestash
  *
@@ -21,6 +18,11 @@ use doganoo\PHPAlgorithms\Datastructure\Lists\ArrayList\ArrayList;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+
+namespace doganoo\DI\Object\Reflection;
+
+use doganoo\PHPAlgorithms\Datastructure\Lists\ArrayList\ArrayList;
+
 interface IReflectionService {
 
     /**
