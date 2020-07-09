@@ -25,9 +25,9 @@ declare(strict_types=1);
  * SOFTWARE.
  */
 
-namespace doganoo\DIP\String;
+namespace doganoo\DIP\Object\String;
 
-use doganoo\DI\String\IStringService;
+use doganoo\DI\Object\String\IStringService;
 
 class StringService implements IStringService {
 

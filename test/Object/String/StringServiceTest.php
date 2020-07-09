@@ -24,11 +24,11 @@ declare(strict_types=1);
  * SOFTWARE.
  */
 
-namespace doganoo\DI\Test\HTTP\URL;
+namespace doganoo\DI\Test\Object\String;
 
-use doganoo\DI\String\IStringService;
+use doganoo\DI\Object\String\IStringService;
 use doganoo\DI\Test\Suite\TestCase;
-use doganoo\DIP\String\StringService;
+use doganoo\DIP\Object\String\StringService;
 
 /**
  * Class StringServiceTest

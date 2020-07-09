@@ -25,7 +25,7 @@ declare(strict_types=1);
  * SOFTWARE.
  */
 
-namespace doganoo\DI\String;
+namespace doganoo\DI\Object\String;
 
 /**
  * Interface StringService
