@@ -21,6 +21,8 @@ declare(strict_types=1);
 
 namespace doganoo\DI\DateTime;
 
+use doganoo\PHPAlgorithms\Datastructure\Table\HashTable;
+
 /**
  * Interface ICalendarService
  *
@@ -55,8 +57,8 @@ interface ICalendarService {
      *
      * @param int $year The year for that the holidays are computed
      *
-     * @return array
+     * @return HashTable
      */
-    public function getPublicHolidays(int $year): array;
+    public function getPublicHolidays(int $year): HashTable;
 
 }

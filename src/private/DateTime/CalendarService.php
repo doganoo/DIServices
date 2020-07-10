@@ -22,6 +22,8 @@ declare(strict_types=1);
 namespace doganoo\DIP\DateTime;
 
 use doganoo\DI\DateTime\ICalendarService;
+use doganoo\DI\DateTime\IDateTimeService;
+use doganoo\PHPAlgorithms\Datastructure\Table\HashTable;
 use function easter_date;
 
 /**
@@ -32,44 +34,137 @@ use function easter_date;
  */
 class CalendarService implements ICalendarService {
 
+    /** @var IDateTimeService */
+    private $dateTimeService;
+
+    public function __construct(IDateTimeService $dateTimeService) {
+        $this->dateTimeService = $dateTimeService;
+    }
+
     /**
      * Returns a list of (germany based) holidays
      *
      * @param int $year The year for that the holidays are computed
      *
-     * @return array
+     * @return HashTable
      */
-    public function getPublicHolidays(int $year): array {
+    public function getPublicHolidays(int $year): HashTable {
 
+        $holidays     = new HashTable();
         $numberOfDays = 60 * 60 * 24;
-        $easterSunday = easter_date($year);
+
+        $easterSunday = $this->dateTimeService->toDateTime(easter_date($year));
 
         // static holidays
-        $holidays [$year . "-01-01"] = ICalendarService::NEW_YEAR;
-        $holidays [$year . "-05-01"] = ICalendarService::INTERNATIONAL_WORKER_DAY;
-        $holidays [$year . "-10-03"] = ICalendarService::ANNIVERSARY_OF_GERMAN_UNIFICATION;
-        $holidays [$year . "-12-25"] = ICalendarService::CHRISTMAS_DAY;
-        $holidays [$year . "-12-26"] = ICalendarService::BOXING_DAY;
-        $holidays [$year . "-12-31"] = ICalendarService::NEW_YEARS_EVE;
-        $holidays [$year . "-11-01"] = ICalendarService::ALL_SAINTS_DAY;
-        $holidays [$year . "-12-24"] = ICalendarService::CHRISTMAS_EVE;
+        $holidays->put(
+            ICalendarService::NEW_YEAR
+            , $this->dateTimeService->fromString("$year-01-01")->getTimestamp()
+        );
+        $holidays->put(
+            ICalendarService::INTERNATIONAL_WORKER_DAY
+            , $this->dateTimeService->fromString("$year-05-01")->getTimestamp()
+        );
+        $holidays->put(
+            ICalendarService::ANNIVERSARY_OF_GERMAN_UNIFICATION
+            , $this->dateTimeService->fromString("$year-10-03")->getTimestamp()
+        );
+        $holidays->put(
+            ICalendarService::CHRISTMAS_DAY
+            , $this->dateTimeService->fromString("$year-12-25")->getTimestamp()
+        );
+        $holidays->put(
+            ICalendarService::BOXING_DAY
+            , $this->dateTimeService->fromString("$year-12-26")->getTimestamp()
+        );
+        $holidays->put(
+            ICalendarService::NEW_YEARS_EVE
+            , $this->dateTimeService->fromString("$year-12-31")->getTimestamp()
+        );
+        $holidays->put(
+            ICalendarService::ALL_SAINTS_DAY
+            , $this->dateTimeService->fromString("$year-11-01")->getTimestamp()
+        );
+        $holidays->put(
+            ICalendarService::CHRISTMAS_EVE
+            , $this->dateTimeService->fromString("$year-12-24")->getTimestamp()
+        );
 
         // dynamic holidays
-        $holidays [$year . date("-m-d", $easterSunday - 2 * $numberOfDays)]  = ICalendarService::GOOD_FRIDAY;
-        $holidays [$year . date("-m-d", $easterSunday + 1 * $numberOfDays)]  = ICalendarService::EASTER_MONDAY;
-        $holidays [$year . date("-m-d", $easterSunday + 39 * $numberOfDays)] = ICalendarService::ASCENSION_DAY;
-        $holidays [$year . date("-m-d", $easterSunday + 50 * $numberOfDays)] = ICalendarService::WHIT_MONDAY;
-        $holidays [$year . date("-m-d", $easterSunday + 60 * $numberOfDays)] = ICalendarService::CORPUS_CHRISTI;
-        $holidays [$year . date("-m-d", $easterSunday - 7 * $numberOfDays)]  = ICalendarService::PALM_SUNDAY;
-        $holidays [$year . date("-m-d", $easterSunday - 1 * $numberOfDays)]  = ICalendarService::HOLY_SATURDAY;
-        $holidays [$year . date("-m-d", $easterSunday + 0 * $numberOfDays)]  = ICalendarService::EASTER_SUNDAY;
+        $holidays->put(
+            ICalendarService::GOOD_FRIDAY
+            , $this->dateTimeService->fromString("$year-12-24")->getTimestamp()
+        );
 
-        $holidays [$year . date("-m-d", strtotime("+1 sunday", mktime(0, 0, 0, 11, 26, $year)))] = ICalendarService::FIRST_ADVENT;
-        $holidays [$year . date("-m-d", strtotime("+2 sunday", mktime(0, 0, 0, 11, 26, $year)))] = ICalendarService::SECOND_ADVENT;
-        $holidays [$year . date("-m-d", strtotime("+3 sunday", mktime(0, 0, 0, 11, 26, $year)))] = ICalendarService::THIRD_ADVENT;
-        $holidays [$year . date("-m-d", strtotime("+4 sunday", mktime(0, 0, 0, 11, 26, $year)))] = ICalendarService::FOURTH_ADVENT;
+        $holidays->put(
+            ICalendarService::GOOD_FRIDAY
+            , $this->dateTimeService->toDateTime(
+            $easterSunday->getTimestamp() - 2 * $numberOfDays
+        )
+        );
+        $holidays->put(
+            ICalendarService::EASTER_MONDAY
+            , $this->dateTimeService->toDateTime(
+            $easterSunday->getTimestamp() + 1 * $numberOfDays
+        )
+        );
+        $holidays->put(
+            ICalendarService::ASCENSION_DAY
+            , $this->dateTimeService->toDateTime(
+            $easterSunday->getTimestamp() + 39 * $numberOfDays
+        )
+        );
+        $holidays->put(
+            ICalendarService::WHIT_MONDAY
+            , $this->dateTimeService->toDateTime(
+            $easterSunday->getTimestamp() + 50 * $numberOfDays
+        )
+        );
+
+        $holidays->put(
+            ICalendarService::CORPUS_CHRISTI
+            , $this->dateTimeService->toDateTime(
+            $easterSunday->getTimestamp() + 60 * $numberOfDays
+        )
+        );
+        $holidays->put(
+            ICalendarService::PALM_SUNDAY
+            , $this->dateTimeService->toDateTime(
+            $easterSunday->getTimestamp() - 7 * $numberOfDays
+        )
+        );
+        $holidays->put(
+            ICalendarService::HOLY_SATURDAY
+            , $this->dateTimeService->toDateTime(
+            $easterSunday->getTimestamp() - 1 * $numberOfDays
+        )
+        );
+        $holidays->put(
+            ICalendarService::EASTER_SUNDAY
+            , $this->dateTimeService->toDateTime(
+            $easterSunday->getTimestamp() * $numberOfDays
+        )
+        );
+
+
+        $holidays->put(
+            ICalendarService::FIRST_ADVENT
+            , $this->dateTimeService->getAdventReferenceDay($year)->modify("+1 sunday")
+        );
+
+        $holidays->put(
+            ICalendarService::SECOND_ADVENT
+            , $this->dateTimeService->getAdventReferenceDay($year)->modify("+2 sunday")
+        );
+        $holidays->put(
+            ICalendarService::THIRD_ADVENT
+            , $this->dateTimeService->getAdventReferenceDay($year)->modify("+3 sunday")
+        );
+        $holidays->put(
+            ICalendarService::FOURTH_ADVENT
+            , $this->dateTimeService->getAdventReferenceDay($year)->modify("+4 sunday")
+        );
+
         return $holidays;
     }
-
 
 }

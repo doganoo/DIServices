@@ -52,18 +52,6 @@ class DateTimeService implements IDateTimeService {
     }
 
     /**
-     * Converts an string formatted date/date time pattern to an instance of DateTimeInterface
-     * or null, if invalid
-     *
-     * @param string $format The formatted string
-     *
-     * @return DateTimeInterface|null
-     */
-    public function fromFormat(string $format): ?DateTimeInterface {
-        return new DateTime($format);
-    }
-
-    /**
      * Returns the number of days between two date times
      *
      * @param DateTimeInterface $start The start date
@@ -78,21 +66,40 @@ class DateTimeService implements IDateTimeService {
     }
 
     /**
-     * Converts a date/datetime string to an instance of DateTimeInterface
+     * alias for fromFormat
      *
      * @param string $dateTime The dateTime as a string
      *
      * @return DateTimeInterface|null
      */
     public function fromString(string $dateTime): ?DateTimeInterface {
-        $time = strtotime($dateTime);
+        return $this->fromFormat($dateTime);
+    }
 
-        if (false === $time) return null;
+    /**
+     * Converts an string formatted date/date time pattern to an instance of DateTimeInterface
+     * or null, if invalid
+     *
+     * @param string $format The formatted string
+     *
+     * @return DateTimeInterface|null
+     */
+    public function fromFormat(string $format): ?DateTimeInterface {
+        return new DateTime($format);
+    }
 
-        $dt = new DateTime();
-        $dt = $dt->setTimestamp($time);
-
-        return $dt;
+    /**
+     * Returns the reference day for calculating 1th, 2nd, 3th and 4th advent
+     *
+     * @param int $year The year
+     *
+     * @return DateTime
+     */
+    public function getAdventReferenceDay(int $year): DateTime {
+        $datTime = new DateTime();
+        $datTime->setDate($year, 11, 26);
+        $datTime->setTime(0, 0, 0, 0);
+        return $datTime;
     }
 
 }

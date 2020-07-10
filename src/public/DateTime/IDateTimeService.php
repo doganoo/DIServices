@@ -26,6 +26,7 @@ declare(strict_types=1);
 
 namespace doganoo\DI\DateTime;
 
+use DateTime;
 use DateTimeInterface;
 
 /**
@@ -73,5 +74,14 @@ interface IDateTimeService {
      * @return DateTimeInterface|null
      */
     public function fromString(string $dateTime): ?DateTimeInterface;
+
+    /**
+     * Returns the reference day for calculating 1th, 2nd, 3th and 4th advent
+     *
+     * @param int $year The year
+     *
+     * @return DateTime
+     */
+    public function getAdventReferenceDay(int $year): DateTime;
 
 }
