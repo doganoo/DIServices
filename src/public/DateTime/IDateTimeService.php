@@ -37,6 +37,8 @@ use DateTimeInterface;
  */
 interface IDateTimeService {
 
+    public const FORMAT_YMD_HIS = "Y-m-d H:i:s";
+
     /**
      * Converts an unix timestamp to an instance of DateTimeInterface
      *
@@ -83,5 +85,13 @@ interface IDateTimeService {
      * @return DateTime
      */
     public function getAdventReferenceDay(int $year): DateTime;
+
+    /**
+     * Formats a given DateTime object to to Y-m-d H:i:s format
+     *
+     * @param DateTimeInterface $dateTime The DateTime to format
+     * @return string
+     */
+    public function toYMDHIS(DateTimeInterface $dateTime): string;
 
 }

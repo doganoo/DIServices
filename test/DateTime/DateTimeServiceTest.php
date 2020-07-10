@@ -24,8 +24,9 @@ declare(strict_types=1);
  * SOFTWARE.
  */
 
-namespace doganoo\DI\Test\HTTP\URL;
+namespace doganoo\DI\Test\DateTime;
 
+use DateTime;
 use DateTimeInterface;
 use doganoo\DI\DateTime\IDateTimeService;
 use doganoo\DI\Test\Suite\TestCase;
@@ -76,6 +77,39 @@ class DateTimeServiceTest extends TestCase {
             $this->assertTrue($dateTime instanceof DateTimeInterface);
             $this->assertTrue($dateTime->getTimestamp() === strtotime($format));
         }
+    }
+
+    /**
+     * @param DateTimeInterface $dateTime
+     * @param string            $formatted
+     * @dataProvider getYMDHIS
+     */
+    public function testToYMDHIS(DateTimeInterface $dateTime, string $formatted) {
+        $string = $this->dateTimeService->toYMDHIS($dateTime);
+        $this->assertTrue($string === $formatted);
+    }
+
+
+    public function getYMDHIS(): array {
+        return [
+            [
+                (new DateTime("2020-08-01 14:25:33"))
+                , "2020-08-01 14:25:33"
+            ]
+            , [
+                (new DateTime("2018-07-05 22:09:14"))
+                , "2018-07-05 22:09:14"
+            ]
+            , [
+                (new DateTime("1999-01-01 03:02:44"))
+                , "1999-01-01 03:02:44"
+            ]
+            , [
+                (new DateTime("3200-12-18 12:00:01"))
+                , "3200-12-18 12:00:01"
+            ]
+            ,
+        ];
     }
 
     public function getDateTimeDifferences(): array {
