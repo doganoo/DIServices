@@ -42,6 +42,41 @@ interface IFloatService {
      *
      * @return bool
      */
-    public function equals(float $first, float $second): bool ;
+    public function equals(float $first, float $second): bool;
+
+
+    /**
+     * This method checks if $value is greater than $value1. If $gte is set to
+     * true, the method checks if $value is greater than or equal to $value1.
+     * From http://php.net/manual/de/language.types.float.php:
+     * So never trust floating number results to the last digit, and do not
+     * compare floating point numbers directly for equality.
+     * Contributed notes in http://php.net/manual/de/language.types.float.php
+     * suggests rounding the values before comparing (see 115 catalin dot luntraru at gmail dot com).
+     *
+     * @param float $value
+     * @param float $value1
+     * @param bool  $gte
+     *
+     * @return bool
+     */
+    public function greaterThan(float $value, float $value1, bool $gte = false): bool;
+
+    /**
+     * This method checks if $value is less than $value1. If $lte is set to
+     * true, the method checks if $value is less than or equal to $value1.
+     * From http://php.net/manual/de/language.types.float.php:
+     * So never trust floating number results to the last digit, and do not
+     * compare floating point numbers directly for equality.
+     * Contributed notes in http://php.net/manual/de/language.types.float.php
+     * suggests rounding the values before comparing (see 115 catalin dot luntraru at gmail dot com).
+     *
+     * @param float $value
+     * @param float $value1
+     * @param bool  $lte
+     *
+     * @return bool
+     */
+    public function lessThan(float $value, float $value1, bool $lte = false): bool;
 
 }
