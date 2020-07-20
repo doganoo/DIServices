@@ -35,15 +35,41 @@ class FloatServiceTest extends TestCase {
      * @param float $second
      * @param bool  $result
      *
-     * @dataProvider getFloats
+     * @dataProvider getFloatsForEquals
      */
-    public function testLessThan(float $first, float $second, bool $result) {
+    public function testEquals(float $first, float $second, bool $result) {
         $methodResult = $this->floatService->equals($first, $second);
-
         $this->assertTrue($result === $methodResult);
     }
 
-    public function getFloats() {
+    /**
+     * @param float $first
+     * @param float $second
+     * @param bool  $lte
+     * @param bool  $result
+     *
+     * @dataProvider getFloatsForLessThanEqual
+     */
+    public function testLessThanEquals(float $first, float $second, bool $lte, bool $result) {
+        $methodResult = $this->floatService->lessThan($first, $second, $lte);
+        $this->assertTrue($result === $methodResult);
+    }
+
+
+    /**
+     * @param float $first
+     * @param float $second
+     * @param bool  $gte
+     * @param bool  $result
+     *
+     * @dataProvider getFloatsForGreaterThanEqual
+     */
+    public function testGreaterThanEquals(float $first, float $second, bool $gte, bool $result) {
+        $methodResult = $this->floatService->greaterThan($first, $second, $gte);
+        $this->assertTrue($result === $methodResult);
+    }
+
+    public function getFloatsForEquals() {
         return [
             [1.23456789, 1.23456780, true]
             , [1.23456780, 1.23456789, true]
@@ -54,6 +80,24 @@ class FloatServiceTest extends TestCase {
             , [1.111, 1.111, true]
             , [1.123456781233556, 1.123456781111111, true]
             , [1.123456781233556, 1.1234111111111, false]
+        ];
+    }
+
+    public function getFloatsForLessThanEqual() {
+        return [
+            [1.2345, 1.234, true, false]
+            , [1.234, 1.2345, true, true]
+            , [1.234, 1.234, true, true]
+            , [1.234, 1.234, false, false]
+        ];
+    }
+
+    public function getFloatsForGreaterThanEqual() {
+        return [
+            [1.2345, 1.234, true, true]
+            , [1.234, 1.2345, true, false]
+            , [1.234, 1.234, true, true]
+            , [1.234, 1.234, false, false]
         ];
     }
 
