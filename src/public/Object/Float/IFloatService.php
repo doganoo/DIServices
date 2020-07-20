@@ -20,12 +20,28 @@ declare(strict_types=1);
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace doganoo\DI\Encryption\Hash;
+namespace doganoo\DI\Object\Float;
 
-interface IHash {
+/**
+ * Interface FloatService
+ *
+ * @package doganoo\DI\Object\Float
+ * @author  Dogan Ucar <dogan@dogan-ucar.de>
+ */
+interface IFloatService {
 
-    public const ALGORITHM_SHA_256 = "sha256";
-
-    public function hashDirectories(string $directory): string;
+    /**
+     * Compares two floats
+     *
+     * Because you should never compare floats directly with <, > or ===
+     *
+     * http://php.net/manual/de/language.types.float.php
+     *
+     * @param float $first
+     * @param float $second
+     *
+     * @return bool
+     */
+    public function equals(float $first, float $second): bool ;
 
 }

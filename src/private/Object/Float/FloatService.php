@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 /**
  * DiServices
  *
@@ -20,12 +19,30 @@ declare(strict_types=1);
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace doganoo\DI\Encryption\Hash;
+namespace doganoo\DIP\Object\Float;
 
-interface IHash {
+use doganoo\DI\Object\Float\IFloatService;
 
-    public const ALGORITHM_SHA_256 = "sha256";
+class FloatService implements IFloatService {
 
-    public function hashDirectories(string $directory): string;
+    /**
+     * Compares two floats
+     *
+     * Because you should never compare floats directly with <, > or ===
+     *
+     * http://php.net/manual/de/language.types.float.php
+     *
+     * @param float $first
+     * @param float $second
+     *
+     * @return bool
+     */
+    public function equals(float $first, float $second): bool {
+        $epsilon = 0.00001;
+        if (abs($first - $second) < $epsilon) {
+            return true;
+        }
+        return false;
+    }
 
 }

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 /**
- * Keestash
+ * DiServices
  *
  * Copyright (C) <2020> <Dogan Ucar>
  *
