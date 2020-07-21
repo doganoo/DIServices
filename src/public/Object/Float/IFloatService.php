@@ -79,4 +79,17 @@ interface IFloatService {
      */
     public function lessThan(float $value, float $value1, bool $lte = false): bool;
 
+    /**
+     * Checks whether a value is in a given range. If $lgte is set, the method will check
+     * for greater/lower than
+     *
+     * @param float $value The actual value
+     * @param float $lower The lowest value
+     * @param float $upper The highest value
+     * @param bool  $lgte  greater/lower than
+     *
+     * @return bool
+     */
+    public function isBetween(float $value, float $lower, float $upper, bool $lgte = false): bool;
+
 }

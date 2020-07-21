@@ -46,6 +46,23 @@ class FloatService implements IFloatService {
     }
 
     /**
+     * Checks whether a value is in a given range. If $lgte is set, the method will check
+     * for greater/lower than
+     *
+     * @param float $value The actual value
+     * @param float $lower The lowest value
+     * @param float $upper The highest value
+     * @param bool  $lgte  greater/lower than
+     *
+     * @return bool
+     */
+    public function isBetween(float $value, float $lower, float $upper, bool $lgte = false): bool {
+        $greater = $this->greaterThan($value, $lower, $lgte);
+        $less    = $this->lessThan($value, $upper, $lgte);
+        return true === $greater && true === $less;
+    }
+
+    /**
      * This method checks if $value is greater than $value1. If $gte is set to
      * true, the method checks if $value is greater than or equal to $value1.
      * From http://php.net/manual/de/language.types.float.php:

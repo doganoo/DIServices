@@ -55,6 +55,19 @@ class FloatServiceTest extends TestCase {
         $this->assertTrue($result === $methodResult);
     }
 
+    /**
+     * @param float $value
+     * @param float $lower
+     * @param float $upper
+     * @param bool  $lgte
+     * @param bool  $result
+     *
+     * @dataProvider getFloatsForIsBetween
+     */
+    public function testIsBetween(float $value, float $lower, float $upper, bool $lgte, bool $result) {
+        $methodResult = $this->floatService->isBetween($value, $lower, $upper, $lgte);
+        $this->assertTrue($methodResult === $result);
+    }
 
     /**
      * @param float $first
@@ -98,6 +111,17 @@ class FloatServiceTest extends TestCase {
             , [1.234, 1.2345, true, false]
             , [1.234, 1.234, true, true]
             , [1.234, 1.234, false, false]
+        ];
+    }
+
+    public function getFloatsForIsBetween() {
+        return [
+            [1.0, 0.5, 2.7, true, true]
+            , [0.5, 0.5, 2.7, true, true]
+            , [0.5, 0.5, 2.7, false, false]
+            , [2.7, 0.5, 2.7, true, true]
+            , [2.7, 0.5, 2.7, false, false]
+            , [15.7, 0.5, 2.7, false, false]
         ];
     }
 
