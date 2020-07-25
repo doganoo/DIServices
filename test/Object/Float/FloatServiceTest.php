@@ -8,7 +8,7 @@ use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\Object\Float\FloatService;
 
 /**
- * di-services
+ * DiServices
  *
  * Copyright (C) <2020> <Dogan Ucar>
  *
