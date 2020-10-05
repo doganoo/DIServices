@@ -1,7 +1,7 @@
 {
   "name": "doganoo/di-services",
-  "description": "service classes in the sense of Dependency Injection",
   "type": "library",
+  "description": "service classes in the sense of Dependency Injection",
   "license": "MIT",
   "authors": [
     {
@@ -9,13 +9,14 @@
       "email": "dogan@dogan-ucar.de"
     }
   ],
-  "minimum-stability": "stable",
   "require": {
     "php": "^7.1",
-    "doganoo/php-algorithms": "^1.0",
-    "ext-calendar": "*"
+    "ext-calendar": "*",
+    "ext-pdo": "*",
+    "doganoo/php-algorithms": "^1.0"
   },
   "require-dev": {
+    "ergebnis/composer-normalize": "^2.8",
     "phpunit/phpunit": "^7.5"
   },
   "autoload": {
@@ -24,5 +25,6 @@
       "doganoo\\DIP\\": "src/private",
       "doganoo\\DI\\Test\\": "test/"
     }
-  }
+  },
+  "minimum-stability": "stable"
 }
