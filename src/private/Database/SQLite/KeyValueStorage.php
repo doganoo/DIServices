@@ -28,6 +28,9 @@ use doganoo\PHPUtil\Util\DateTimeUtil;
 
 namespace doganoo\DIP\Database\SQLite;
 
+use DateTime;
+use PDO;
+
 class KeyValueStorage implements IKeyValueStorage {
 
     /** @var PDO */
