@@ -1,12 +1,5 @@
 <?php
 declare(strict_types=1);
-
-use doganoo\DI\Database\IKeyValueStorage;
-use doganoo\DIP\Exception\Database\CouldNotExecuteException;
-use doganoo\DIP\Exception\Database\CouldNotPrepareStatementException;
-use doganoo\DIP\Exception\Database\SQLite\NoDatabaseFoundException;
-use doganoo\PHPUtil\Util\DateTimeUtil;
-
 /**
  * DiServices
  *
@@ -29,7 +22,12 @@ use doganoo\PHPUtil\Util\DateTimeUtil;
 namespace doganoo\DIP\Database\SQLite;
 
 use DateTime;
+use doganoo\DI\Database\IKeyValueStorage;
+use Exception;
 use PDO;
+use doganoo\DIP\Exception\Database\CouldNotExecuteException;
+use doganoo\DIP\Exception\Database\CouldNotPrepareStatementException;
+use doganoo\DIP\Exception\Database\SQLite\NoDatabaseFoundException;
 
 class KeyValueStorage implements IKeyValueStorage {
 
@@ -44,7 +42,13 @@ class KeyValueStorage implements IKeyValueStorage {
     }
 
     public function connect(): bool {
-        $this->database = new PDO("sqlite:{$this->path}");
+        try {
+            $this->database = new PDO("sqlite:{$this->path}");
+            return true;
+        } catch (Exception $exception) {
+            // TODO log
+            return false;
+        }
     }
 
     private function createTable(): void {
