@@ -89,6 +89,38 @@ class DateTimeServiceTest extends TestCase {
         $this->assertTrue($string === $formatted);
     }
 
+    /**
+     * @param DateTimeInterface $dateTime
+     * @param string            $formatted
+     * @dataProvider getYMD
+     */
+    public function testToYMD(DateTimeInterface $dateTime, string $formatted) {
+        $string = $this->dateTimeService->toYMD($dateTime);
+        $this->assertTrue($string === $formatted);
+    }
+
+
+    public function getYMD(): array {
+        return [
+            [
+                (new DateTime("2020-08-01"))
+                , "2020-08-01"
+            ]
+            , [
+                (new DateTime("2018-07-05"))
+                , "2018-07-05"
+            ]
+            , [
+                (new DateTime("1999-01-01"))
+                , "1999-01-01"
+            ]
+            , [
+                (new DateTime("3200-12-18"))
+                , "3200-12-18"
+            ]
+            ,
+        ];
+    }
 
     public function getYMDHIS(): array {
         return [

@@ -112,4 +112,14 @@ class DateTimeService implements IDateTimeService {
         return $dateTime->format(IDateTimeService::FORMAT_YMD_HIS);
     }
 
+    /**
+     * Formats a given DateTime object to to Y-m-d format
+     *
+     * @param DateTimeInterface $dateTime The DateTime to format
+     * @return string
+     */
+    public function toYMD(DateTimeInterface $dateTime): string {
+        return $dateTime->format(IDateTimeService::FORMAT_YMD);
+    }
+
 }

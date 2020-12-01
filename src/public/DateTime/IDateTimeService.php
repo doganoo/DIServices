@@ -38,6 +38,7 @@ use DateTimeInterface;
 interface IDateTimeService {
 
     public const FORMAT_YMD_HIS = "Y-m-d H:i:s";
+    public const FORMAT_YMD = "Y-m-d";
 
     /**
      * Converts an unix timestamp to an instance of DateTimeInterface
@@ -93,5 +94,13 @@ interface IDateTimeService {
      * @return string
      */
     public function toYMDHIS(DateTimeInterface $dateTime): string;
+
+    /**
+     * Formats a given DateTime object to to Y-m-d format
+     *
+     * @param DateTimeInterface $dateTime The DateTime to format
+     * @return string
+     */
+    public function toYMD(DateTimeInterface $dateTime): string;
 
 }
