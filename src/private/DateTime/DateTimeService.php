@@ -122,4 +122,14 @@ class DateTimeService implements IDateTimeService {
         return $dateTime->format(IDateTimeService::FORMAT_YMD);
     }
 
+    /**
+     * Formats a given DateTime object to to d.m.Y H:i:s (german date format)
+     *
+     * @param DateTimeInterface $dateTime The DateTime to format
+     * @return string
+     */
+    public function toDMYHIS(DateTimeInterface $dateTime): string {
+        return $dateTime->format(IDateTimeService::FORMAT_DMY_HIS);
+    }
+
 }

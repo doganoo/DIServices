@@ -26,5 +26,8 @@
       "doganoo\\DI\\Test\\": "test/"
     }
   },
-  "minimum-stability": "stable"
+  "minimum-stability": "stable",
+  "scripts": {
+    "test": "./vendor/bin/phpunit test"
+  }
 }
