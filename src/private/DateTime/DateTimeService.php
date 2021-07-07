@@ -29,6 +29,7 @@ namespace doganoo\DIP\DateTime;
 use DateTime;
 use DateTimeInterface;
 use doganoo\DI\DateTime\IDateTimeService;
+use Exception;
 
 /**
  * Class DateTimeService
@@ -70,9 +71,10 @@ class DateTimeService implements IDateTimeService {
      *
      * @param string $dateTime The dateTime as a string
      *
-     * @return DateTimeInterface|null
+     * @return DateTimeInterface
+     * @throws Exception
      */
-    public function fromString(string $dateTime): ?DateTimeInterface {
+    public function fromString(string $dateTime): DateTimeInterface {
         return $this->fromFormat($dateTime);
     }
 
@@ -82,9 +84,10 @@ class DateTimeService implements IDateTimeService {
      *
      * @param string $format The formatted string
      *
-     * @return DateTimeInterface|null
+     * @return DateTimeInterface
+     * @throws Exception
      */
-    public function fromFormat(string $format): ?DateTimeInterface {
+    public function fromFormat(string $format): DateTimeInterface {
         return new DateTime($format);
     }
 

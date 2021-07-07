@@ -28,6 +28,7 @@ namespace doganoo\DI\DateTime;
 
 use DateTime;
 use DateTimeInterface;
+use Exception;
 
 /**
  * Interface IDateTimeService
@@ -56,9 +57,10 @@ interface IDateTimeService {
      *
      * @param string $format The formatted string
      *
-     * @return DateTimeInterface|null
+     * @return DateTimeInterface
+     * @throws Exception
      */
-    public function fromFormat(string $format): ?DateTimeInterface;
+    public function fromFormat(string $format): DateTimeInterface;
 
     /**
      * Returns the number of days between two date times
@@ -75,9 +77,10 @@ interface IDateTimeService {
      *
      * @param string $dateTime The dateTime as a string
      *
-     * @return DateTimeInterface|null
+     * @return DateTimeInterface
+     * @throws Exception
      */
-    public function fromString(string $dateTime): ?DateTimeInterface;
+    public function fromString(string $dateTime): DateTimeInterface;
 
     /**
      * Returns the reference day for calculating 1th, 2nd, 3th and 4th advent
