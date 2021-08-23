@@ -3,7 +3,7 @@ declare(strict_types=1);
 /**
  * DiServices
  *
- * Copyright (C) <2020> <Dogan Ucar>
+ * Copyright (C) <2021> <Dogan Ucar>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -19,32 +19,16 @@ declare(strict_types=1);
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace doganoo\DI\HTTP;
+namespace doganoo\DIP\HTTP;
 
-use doganoo\DIP\Exception\HTTP\UnknownStatusCodeException;
+final class IStatus {
 
-/**
- * Interface IHTTPService
- *
- * @package doganoo\DI\HTTP
- * @author  Dogan Ucar <dogan@dogan-ucar.de>
- */
-interface IHTTPService {
+    public const OK          = 200;
+    public const BAD_REQUEST = 400;
+    public const NOT_FOUND   = 404;
 
-    /**
-     * @param int $statusCode
-     *
-     * @return string
-     * @throws UnknownStatusCodeException
-     */
-    public function translateCode(int $statusCode): string;
-
-    /**
-     * Removes all tags (HTML, XML, etc) of a given string $text
-     *
-     * @param string $text
-     * @return string
-     */
-    public function removeTags(string $text): string;
+    public const OK_TEXT          = "OK";
+    public const BAD_REQUEST_TEXT = "BAD REQUEST";
+    public const NOT_FOUND_TEXT   = "NOT FOUND";
 
 }

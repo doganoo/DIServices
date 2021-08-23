@@ -25,11 +25,18 @@ use doganoo\DI\HTTP\IHTTPService;
 use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\Exception\HTTP\UnknownStatusCodeException;
 use doganoo\DIP\HTTP\HTTPService;
+use doganoo\DIP\HTTP\IStatus;
 
 class HTTPServiceTest extends TestCase {
 
     /** @var IHTTPService */
     private $httpService;
+
+    protected function setUp() {
+        parent::setUp();
+
+        $this->httpService = new HTTPService();
+    }
 
     /**
      * @param int    $code
@@ -37,12 +44,12 @@ class HTTPServiceTest extends TestCase {
      *
      * @dataProvider getStatusCodes
      */
-    public function testGetDescriptionByCode(int $code, string $description) {
+    public function testGetDescriptionByCode(int $code, string $description): void {
         $result = $this->httpService->translateCode($code);
         $this->assertTrue($result === $description);
     }
 
-    public function testException() {
+    public function testException(): void {
         try {
             $this->httpService->translateCode(500);
         } catch (UnknownStatusCodeException $exception) {
@@ -50,18 +57,34 @@ class HTTPServiceTest extends TestCase {
         }
     }
 
-    public function getStatusCodes() {
+    /**
+     * @param string $actual
+     * @param string $expected
+     *
+     * @dataProvider getTags
+     */
+    public function testRemoveTags(string $actual, string $expected): void {
+        $this->assertTrue(
+            $expected === $this->httpService->removeTags($actual)
+        );
+    }
+
+    public function getTags(): array {
         return [
-            [200, "OK"]
-            , [400, "BAD REQUEST"]
-            , [404, "NOT FOUND"]
+            ["<br>this is a test</br>", "this is a test"]
+            , ["this is the next test", "this is the next test"]
+            , ["<script>alert('hello world');</script>", "alert('hello world');"]
+            , ["<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>", "ToveJaniReminderDon't forget me this weekend!"]
         ];
     }
 
-    protected function setUp() {
-        parent::setUp();
-
-        $this->httpService = new HTTPService();
+    public function getStatusCodes(): array {
+        return [
+            [IStatus::OK, IStatus::OK_TEXT]
+            , [IStatus::BAD_REQUEST, IStatus::BAD_REQUEST_TEXT]
+            , [IStatus::NOT_FOUND, IStatus::NOT_FOUND_TEXT]
+        ];
     }
+
 
 }

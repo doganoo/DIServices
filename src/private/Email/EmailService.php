@@ -58,4 +58,14 @@ class EmailService implements IEmailService {
 
     }
 
+    /**
+     * Checks whether a given string is a valid email address
+     *
+     * @param string $string
+     * @return bool
+     */
+    public function isEmailAddress(string $string): bool {
+        return false !== filter_var($string, FILTER_VALIDATE_EMAIL);
+    }
+
 }

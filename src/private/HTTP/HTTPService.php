@@ -35,7 +35,6 @@ class HTTPService implements IHTTPService {
     /**
      * @param int $statusCode
      *
-     * TODO replace with constants
      * TODO extend
      *
      * @return string
@@ -43,15 +42,25 @@ class HTTPService implements IHTTPService {
      */
     public function translateCode(int $statusCode): string {
         switch ($statusCode) {
-            case 200:
-                return "OK";
-            case 400:
-                return "BAD REQUEST";
-            case 404:
-                return "NOT FOUND";
+            case IStatus::OK:
+                return IStatus::OK_TEXT;
+            case IStatus::BAD_REQUEST:
+                return IStatus::BAD_REQUEST_TEXT;
+            case IStatus::NOT_FOUND:
+                return IStatus::NOT_FOUND_TEXT;
             default:
                 throw new UnknownStatusCodeException();
         }
+    }
+
+    /**
+     * Removes all tags (HTML, XML, etc) of a given string $text
+     *
+     * @param string $text
+     * @return string
+     */
+    public function removeTags(string $text): string {
+        return strip_tags($text);
     }
 
 }

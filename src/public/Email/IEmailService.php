@@ -39,4 +39,12 @@ interface IEmailService {
      */
     public function extractEmailAddresses(string $plainText): array;
 
+    /**
+     * Checks whether a given string is a valid email address
+     *
+     * @param string $string
+     * @return bool
+     */
+    public function isEmailAddress(string $string): bool;
+
 }
