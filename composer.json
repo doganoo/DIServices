@@ -13,7 +13,8 @@
     "php": "^7.4",
     "ext-calendar": "*",
     "ext-pdo": "*",
-    "doganoo/php-algorithms": "^1.0"
+    "doganoo/php-algorithms": "^1.0",
+    "ext-json": "*"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.8",
