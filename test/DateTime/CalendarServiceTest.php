@@ -18,9 +18,7 @@ declare(strict_types=1);
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-
-namespace doganoo\DI\Test\HTTP\URL;
-
+namespace doganoo\DI\Test\DateTime;
 
 use DateTimeInterface;
 use doganoo\DI\Test\Suite\TestCase;
@@ -29,8 +27,7 @@ use doganoo\DIP\DateTime\DateTimeService;
 
 class CalendarServiceTest extends TestCase {
 
-    /** @var CalendarService */
-    private $calendarService;
+    private CalendarService $calendarService;
 
     /**
      * @param int   $year
