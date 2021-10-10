@@ -12,12 +12,13 @@
   "require": {
     "php": "^7.4",
     "ext-calendar": "*",
+    "ext-json": "*",
     "ext-pdo": "*",
     "doganoo/php-algorithms": "^1.0",
-    "ext-json": "*"
+    "ezyang/htmlpurifier": "^4.13"
   },
   "require-dev": {
-    "ergebnis/composer-normalize": "^2.8",
+    "ergebnis/composer-normalize": "^2.15",
     "phpunit/phpunit": "^7.5"
   },
   "autoload": {
