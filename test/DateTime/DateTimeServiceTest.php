@@ -102,6 +102,16 @@ class DateTimeServiceTest extends TestCase {
     /**
      * @param DateTimeInterface $dateTime
      * @param string            $formatted
+     * @dataProvider getHIS
+     */
+    public function testToHIS(DateTimeInterface $dateTime, string $formatted) {
+        $string = $this->dateTimeService->toHIS($dateTime);
+        $this->assertTrue($string === $formatted);
+    }
+
+    /**
+     * @param DateTimeInterface $dateTime
+     * @param string            $formatted
      * @dataProvider getYMD
      */
     public function testToYMD(DateTimeInterface $dateTime, string $formatted) {
@@ -154,6 +164,27 @@ class DateTimeServiceTest extends TestCase {
         ];
     }
 
+    public function getHIS(): array {
+        return [
+            [
+                (new DateTime("2020-08-01 14:25:33"))
+                , "14:25:33"
+            ]
+            , [
+                (new DateTime("2018-07-05 22:09:14"))
+                , "22:09:14"
+            ]
+            , [
+                (new DateTime("1999-01-01 03:02:44"))
+                , "03:02:44"
+            ]
+            , [
+                (new DateTime("3200-12-18 12:00:01"))
+                , "12:00:01"
+            ]
+            ,
+        ];
+    }
     public function getDMYHIS(): array {
         return [
             [

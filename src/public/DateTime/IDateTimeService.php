@@ -40,6 +40,7 @@ interface IDateTimeService {
 
     public const FORMAT_YMD_HIS = "Y-m-d H:i:s";
     public const FORMAT_DMY_HIS = "d.m.Y H:i:s";
+    public const FORMAT_HIS     = "H:i:s";
     public const FORMAT_YMD     = "Y-m-d";
 
     /**
@@ -92,7 +93,7 @@ interface IDateTimeService {
     public function getAdventReferenceDay(int $year): DateTime;
 
     /**
-     * Formats a given DateTime object to to Y-m-d H:i:s format
+     * Formats a given DateTime object to Y-m-d H:i:s format
      *
      * @param DateTimeInterface $dateTime The DateTime to format
      * @return string
@@ -100,7 +101,7 @@ interface IDateTimeService {
     public function toYMDHIS(DateTimeInterface $dateTime): string;
 
     /**
-     * Formats a given DateTime object to to Y-m-d format
+     * Formats a given DateTime object to Y-m-d format
      *
      * @param DateTimeInterface $dateTime The DateTime to format
      * @return string
@@ -108,7 +109,15 @@ interface IDateTimeService {
     public function toYMD(DateTimeInterface $dateTime): string;
 
     /**
-     * Formats a given DateTime object to to d.m.Y H:i:s (german date format)
+     * Formats a given DateTime object to H:i:s format
+     *
+     * @param DateTimeInterface $dateTime The DateTime to format
+     * @return string
+     */
+    public function toHis(DateTimeInterface $dateTime): string;
+
+    /**
+     * Formats a given DateTime object to d.m.Y H:i:s (german date format)
      *
      * @param DateTimeInterface $dateTime The DateTime to format
      * @return string

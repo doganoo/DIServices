@@ -135,4 +135,14 @@ class DateTimeService implements IDateTimeService {
         return $dateTime->format(IDateTimeService::FORMAT_DMY_HIS);
     }
 
+    /**
+     * Formats a given DateTime object to H:i:s format
+     *
+     * @param DateTimeInterface $dateTime The DateTime to format
+     * @return string
+     */
+    public function toHis(DateTimeInterface $dateTime): string {
+       return $dateTime->format(IDateTimeService::FORMAT_HIS);
+    }
+
 }
