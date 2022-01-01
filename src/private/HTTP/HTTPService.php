@@ -63,4 +63,14 @@ class HTTPService implements IHTTPService {
         return strip_tags($text);
     }
 
+    /**
+     * Removes the port information after the address if exists
+     *
+     * @param string $address
+     * @return string
+     */
+    public function removePort(string $address): string {
+        return preg_replace('/:[0-9]+/', '', $address);
+    }
+
 }

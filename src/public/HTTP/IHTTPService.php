@@ -47,4 +47,12 @@ interface IHTTPService {
      */
     public function removeTags(string $text): string;
 
+    /**
+     * Removes the port information after the address if exists
+     *
+     * @param string $address
+     * @return string
+     */
+    public function removePort(string $address): string;
+
 }

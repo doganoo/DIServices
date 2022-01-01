@@ -69,6 +69,32 @@ class HTTPServiceTest extends TestCase {
         );
     }
 
+    /**
+     * @param string $address
+     * @param string $expected
+     * @return void
+     *
+     * @dataProvider getAddresses
+     */
+    public function testRemovePort(string $address, string $expected): void {
+        $this->assertTrue(
+            $expected === $this->httpService->removePort($address)
+        );
+    }
+
+    public function getAddresses(): array {
+        return [
+            ['127.0.0.1:8080', '127.0.0.1']
+            , ['ucar-solutions.de:1234', 'ucar-solutions.de']
+            , ['https://facebook.com:9876', 'https://facebook.com']
+            , ['https://google.com/sub/file/index.php:9876', 'https://google.com/sub/file/index.php']
+            , ['https://subdomain.amazon.com:33', 'https://subdomain.amazon.com']
+            , ['example.org', 'example.org']
+            , ['https://example.org', 'https://example.org']
+            , ['https://www.example.org', 'https://www.example.org']
+        ];
+    }
+
     public function getTags(): array {
         return [
             ["<br>this is a test</br>", "this is a test"]
