@@ -45,4 +45,12 @@ interface IURLService {
      */
     public function getParameterFromUrl(string $url): HashTable;
 
+    /**
+     * checks whether $raw is a valid url
+     *
+     * @param string $raw
+     * @return bool
+     */
+    public function isUrl(string $raw): bool;
+
 }

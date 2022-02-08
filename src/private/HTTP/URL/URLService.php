@@ -63,4 +63,14 @@ class URLService implements IURLService {
         return $table;
     }
 
+    /**
+     * checks whether $raw is a valid url
+     *
+     * @param string $raw
+     * @return bool
+     */
+    public function isUrl(string $raw): bool {
+        return false !== filter_var($raw, FILTER_VALIDATE_URL);
+    }
+
 }

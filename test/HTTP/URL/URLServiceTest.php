@@ -26,14 +26,14 @@ declare(strict_types=1);
 
 namespace doganoo\DI\Test\HTTP\URL;
 
+use doganoo\DI\HTTP\URL\IURLService;
 use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\HTTP\URL\URLService;
 use doganoo\PHPAlgorithms\Datastructure\Table\HashTable;
 
 class URLServiceTest extends TestCase {
 
-    /** @var URLService */
-    private $urlService;
+    private IURLService $urlService;
 
     /**
      * @param string $url
@@ -42,7 +42,7 @@ class URLServiceTest extends TestCase {
      * @dataProvider getData
      */
     public function testGetParameterFromUrl(string $url, array $data): void {
-        $table = $this->urlService->getParameterFromUrl($url);
+        $table  = $this->urlService->getParameterFromUrl($url);
         $keySet = $table->keySet();
         // in order to avoid 'test did not perform any assertions' for empty data provider
         $this->assertInstanceOf(HashTable::class, $table);
@@ -52,6 +52,25 @@ class URLServiceTest extends TestCase {
             $this->assertNotNull($value);
         }
 
+    }
+
+    /**
+     * @param string $raw
+     * @param bool   $result
+     * @return void
+     * @dataProvider getIsUrlData
+     */
+    public function testIsUrl(string $raw, bool $result): void {
+        $this->assertTrue($result === $this->urlService->isUrl($raw));
+    }
+
+    public function getIsUrlData(): array {
+        return [
+            ['https://ucar-solutions.de/', true]
+            , ['https://stackoverflow.com/a/2058596', true]
+            , ['foo@bar', false]
+            , ['fooBar', false]
+        ];
     }
 
     public function getData(): array {

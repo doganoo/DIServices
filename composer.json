@@ -31,5 +31,10 @@
   "minimum-stability": "stable",
   "scripts": {
     "test": "./vendor/bin/phpunit test"
+  },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true
+    }
   }
 }
