@@ -22,6 +22,7 @@ declare(strict_types=1);
 namespace doganoo\DIP\HTTP;
 
 use doganoo\DI\HTTP\IHTTPService;
+use doganoo\DI\HTTP\IStatus;
 use doganoo\DIP\Exception\HTTP\UnknownStatusCodeException;
 
 /**

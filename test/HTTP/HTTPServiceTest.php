@@ -22,10 +22,10 @@ declare(strict_types=1);
 namespace doganoo\DI\Test\HTTP;
 
 use doganoo\DI\HTTP\IHTTPService;
+use doganoo\DI\HTTP\IStatus;
 use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\Exception\HTTP\UnknownStatusCodeException;
 use doganoo\DIP\HTTP\HTTPService;
-use doganoo\DIP\HTTP\IStatus;
 
 class HTTPServiceTest extends TestCase {
 

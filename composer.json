@@ -19,7 +19,8 @@
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.15",
-    "phpunit/phpunit": "^7.5"
+    "phpunit/phpunit": "^7.5",
+    "symfony/var-dumper": "^5.4"
   },
   "autoload": {
     "psr-4": {
@@ -30,7 +31,7 @@
   },
   "minimum-stability": "stable",
   "scripts": {
-    "test": "./vendor/bin/phpunit test"
+    "test": "./vendor/bin/phpunit test/"
   },
   "config": {
     "allow-plugins": {

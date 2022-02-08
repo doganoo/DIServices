@@ -19,9 +19,9 @@ declare(strict_types=1);
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace doganoo\DIP\HTTP;
+namespace doganoo\DI\HTTP;
 
-final class IStatus {
+interface IStatus {
 
     public const OK          = 200;
     public const BAD_REQUEST = 400;
