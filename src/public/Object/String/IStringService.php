@@ -44,4 +44,22 @@ interface IStringService {
      */
     public function isEmpty(?string $value): bool;
 
+    /**
+     * Returns whether two given strings are equal (case sensitive)
+     *
+     * @param string $first  The first string to compare
+     * @param string $second The second string to compare
+     * @return bool
+     */
+    public function equals(string $first, string $second): bool;
+
+    /**
+     * Returns whether two given strings are equal (case insensitive)
+     *
+     * @param string $first  The first string to compare
+     * @param string $second The second string to compare
+     * @return bool
+     */
+    public function equalsIgnoreCase(string $first, string $second): bool;
+
 }

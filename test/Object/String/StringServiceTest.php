@@ -47,11 +47,61 @@ class StringServiceTest extends TestCase {
      *
      * @dataProvider getData
      */
-    public function testIsEmpty(?string $value, bool $valid) {
+    public function testIsEmpty(?string $value, bool $valid): void {
         $this->assertTrue($valid === $this->stringService->isEmpty($value));
     }
 
-    public function getData() {
+    /**
+     * @param string $first
+     * @param string $second
+     * @param bool   $equal
+     * @return void
+     * @dataProvider getIsEqualCaseSensitiveData
+     */
+    public function testIsEqualCaseSensitive(string $first, string $second, bool $equal): void {
+        $this->assertTrue(
+            $equal === $this->stringService->equals($first, $second)
+        );
+    }
+
+    /**
+     * @param string $first
+     * @param string $second
+     * @param bool   $equal
+     * @return void
+     * @dataProvider getIsEqualCaseInsensitiveData
+     */
+    public function testIsEqualCaseInsensitive(string $first, string $second, bool $equal): void {
+        $this->assertTrue(
+            $equal === $this->stringService->equalsIgnoreCase($first, $second)
+        );
+    }
+
+    public function getIsEqualCaseSensitiveData(): array {
+        return [
+            ['a', 'a', true],
+            ['a', 'A', false],
+            ['tralalalalallalalal', 'tralalalalallalalal1234', false],
+            ['tralalalalallalalal', 'tralalalalallalalal', true],
+            ['tralalalalallalalal', 'tralalalalallalaLal', false],
+            ['dasistdashausvonnikolaus', 'thisisallgoodyouknowwhatimean', false],
+        ];
+    }
+
+    public function getIsEqualCaseInsensitiveData(): array {
+        return [
+            ['a', 'a', true],
+            ['a', 'A', true],
+            ['tralalalalallalalal', 'tralalalalallalalal1234', false],
+            ['tralalalalallalalal', 'tralalalalallalalal', true],
+            ['tralalalalallalalal', 'tralalalalallalaLal', true],
+            ['dasistdashausvonnikolaus', 'thisisallgoodyouknowwhatimean', false],
+            ['kEeStAsH', 'keestash', true],
+        ];
+
+    }
+
+    public function getData(): array {
         return [
             [
                 ""

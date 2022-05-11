@@ -43,4 +43,26 @@ class StringService implements IStringService {
         return false;
     }
 
+    /**
+     * Returns whether two given strings are equal (case sensitive)
+     *
+     * @param string $first  The first string to compare
+     * @param string $second The second string to compare
+     * @return bool
+     */
+    public function equals(string $first, string $second): bool {
+        return strcmp($first, $second) === 0;
+    }
+
+    /**
+     * Returns whether two given strings are equal (case insensitive)
+     *
+     * @param string $first  The first string to compare
+     * @param string $second The second string to compare
+     * @return bool
+     */
+    public function equalsIgnoreCase(string $first, string $second): bool {
+        return strcasecmp($first, $second) === 0;
+    }
+
 }
