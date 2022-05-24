@@ -53,7 +53,7 @@ class Hash implements IHash {
         while (false !== ($file = $dir->read())) {
             if ($file != '.' && $file != '..') {
                 if (true === is_dir($directory . '/' . $file)) {
-                    $files [] = $this->hashDirectory($directory . '/' . $file);
+                    $files [] = $this->hashDirectories($directory . '/' . $file);
                 } else {
                     $files [] = md5_file($directory . '/' . $file);
                 }

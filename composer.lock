@@ -4,26 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d473968f226114155e3b2ec229ecd724",
+    "content-hash": "e0edb03009f3bc3564fc567bf9a16115",
     "packages": [
         {
             "name": "doganoo/php-algorithms",
-            "version": "1.1.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doganoo/PHPAlgorithms.git",
-                "reference": "78152f07b1499a2ed2f630890d2f4042f1379e6f"
+                "reference": "db338e79e386782533a60dcdd94ee7b857f7752b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doganoo/PHPAlgorithms/zipball/78152f07b1499a2ed2f630890d2f4042f1379e6f",
-                "reference": "78152f07b1499a2ed2f630890d2f4042f1379e6f",
+                "url": "https://api.github.com/repos/doganoo/PHPAlgorithms/zipball/db338e79e386782533a60dcdd94ee7b857f7752b",
+                "reference": "db338e79e386782533a60dcdd94ee7b857f7752b",
                 "shasum": ""
             },
             "require": {
                 "doganoo/php-util": "0.5.*",
                 "ext-json": "*",
-                "ext-pdo": "*",
                 "php": ">=7.4"
             },
             "require-dev": {
@@ -31,6 +30,7 @@
                 "phpcompatibility/php-compatibility": "^9.3",
                 "phpstan/phpstan": "^0.12.54",
                 "phpunit/phpunit": "6.5",
+                "roave/security-advisories": "dev-latest",
                 "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
@@ -59,7 +59,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doganoo/PHPAlgorithms/issues",
-                "source": "https://github.com/doganoo/PHPAlgorithms/tree/1.1.1"
+                "source": "https://github.com/doganoo/PHPAlgorithms/tree/2.0.0"
             },
             "funding": [
                 {
@@ -67,7 +67,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-02-06T17:57:09+00:00"
+            "time": "2022-05-24T09:30:02+00:00"
         },
         {
             "name": "doganoo/php-util",
@@ -2537,5 +2537,5 @@
         "ext-pdo": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

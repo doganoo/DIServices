@@ -14,7 +14,7 @@
     "ext-calendar": "*",
     "ext-json": "*",
     "ext-pdo": "*",
-    "doganoo/php-algorithms": "^1.0",
+    "doganoo/php-algorithms": "^2.0",
     "ezyang/htmlpurifier": "^4.13"
   },
   "require-dev": {

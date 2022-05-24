@@ -23,6 +23,7 @@ namespace doganoo\DIP\Database\SQLite;
 
 use DateTime;
 use doganoo\DI\Database\IKeyValueStorage;
+use doganoo\DI\DateTime\IDateTimeService;
 use Exception;
 use PDO;
 use doganoo\DIP\Exception\Database\CouldNotExecuteException;
@@ -127,7 +128,7 @@ class KeyValueStorage implements IKeyValueStorage {
         $statement->bindValue(':key', $key);
         $statement->bindValue(':value', $value);
         $createTs = new DateTime();
-        $statement->bindValue(':create_ts', $createTs->format(DateTimeUtil::MYSQL_DATE_TIME_FORMAT));
+        $statement->bindValue(':create_ts', $createTs->format(IDateTimeService::FORMAT_YMD_HIS));
         $executed = $statement->execute();
 
         if (false === $executed) {
@@ -151,7 +152,7 @@ class KeyValueStorage implements IKeyValueStorage {
 
         $createTs = new DateTime();
         $statement->bindValue(':value', $value);
-        $statement->bindValue(':create_ts', $createTs->format(DateTimeUtil::MYSQL_DATE_TIME_FORMAT));
+        $statement->bindValue(':create_ts', $createTs->format(IDateTimeService::FORMAT_YMD_HIS));
         $statement->bindValue(':key', $key);
         $executed = $statement->execute();
 
