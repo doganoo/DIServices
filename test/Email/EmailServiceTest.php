@@ -29,7 +29,7 @@ class EmailServiceTest extends TestCase {
 
     private IEmailService $emailService;
 
-    protected function setUp() {
+    protected function setUp(): void {
         parent::setUp();
         $this->emailService = new EmailService();
     }

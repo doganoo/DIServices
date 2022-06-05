@@ -29,12 +29,10 @@ use doganoo\DIP\HTTP\HTTPService;
 
 class HTTPServiceTest extends TestCase {
 
-    /** @var IHTTPService */
-    private $httpService;
+    private IHTTPService $httpService;
 
-    protected function setUp() {
+    protected function setUp(): void {
         parent::setUp();
-
         $this->httpService = new HTTPService();
     }
 

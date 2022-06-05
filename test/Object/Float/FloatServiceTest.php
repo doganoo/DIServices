@@ -27,8 +27,12 @@ use doganoo\DIP\Object\Float\FloatService;
  */
 class FloatServiceTest extends TestCase {
 
-    /** @var IFloatService */
-    private $floatService;
+    private IFloatService $floatService;
+
+    protected function setUp(): void {
+        parent::setUp();
+        $this->floatService = new FloatService();
+    }
 
     /**
      * @param float $first
@@ -123,12 +127,6 @@ class FloatServiceTest extends TestCase {
             , [2.7, 0.5, 2.7, false, false]
             , [15.7, 0.5, 2.7, false, false]
         ];
-    }
-
-    protected function setUp() {
-        parent::setUp();
-
-        $this->floatService = new FloatService();
     }
 
 }

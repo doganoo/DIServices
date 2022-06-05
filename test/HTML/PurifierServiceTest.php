@@ -28,7 +28,7 @@ class PurifierServiceTest extends TestCase {
 
     private IPurifierService $purifierService;
 
-    protected function setUp() {
+    protected function setUp(): void {
         parent::setUp();
         $this->purifierService = new PurifierService();
     }
@@ -60,7 +60,7 @@ class PurifierServiceTest extends TestCase {
 
     public function provideEncodeEntities(): array {
         return [
-             ["<script>alert('javascript')</script>", "&lt;script&gt;alert('javascript')&lt;/script&gt;"]
+            ["<script>alert('javascript')</script>", "&lt;script&gt;alert(&#039;javascript&#039;)&lt;/script&gt;"]
         ];
     }
 

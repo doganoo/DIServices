@@ -29,7 +29,7 @@ class NumberServiceTest extends TestCase {
 
     private INumberService $numberService;
 
-    protected function setUp() {
+    protected function setUp(): void {
         parent::setUp();
         $this->numberService = new NumberService();
     }
