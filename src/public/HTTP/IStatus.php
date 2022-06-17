@@ -23,12 +23,30 @@ namespace doganoo\DI\HTTP;
 
 interface IStatus {
 
-    public const OK          = 200;
-    public const BAD_REQUEST = 400;
-    public const NOT_FOUND   = 404;
+    public const OK                    = 200;
+    public const BAD_REQUEST           = 400;
+    public const UNAUTHORIZED          = 401;
+    public const FORBIDDEN             = 403;
+    public const NOT_FOUND             = 404;
+    public const NOT_ALLOWED           = 405;
+    public const NOT_ACCEPTABLE        = 406;
+    public const INTERNAL_SERVER_ERROR = 500;
 
-    public const OK_TEXT          = "OK";
-    public const BAD_REQUEST_TEXT = "BAD REQUEST";
-    public const NOT_FOUND_TEXT   = "NOT FOUND";
+    public const OK_TEXT                    = "OK";
+    public const BAD_REQUEST_TEXT           = "BAD REQUEST";
+    public const UNAUTHORIZED_TEXT          = "UNAUTHORIZED";
+    public const FORBIDDEN_TEXT             = "FORBIDDEN";
+    public const NOT_FOUND_TEXT             = "NOT FOUND";
+    public const NOT_ALLOWED_TEXT           = "NOT ALLOWED";
+    public const NOT_ACCEPTABLE_TEXT        = "NOT ACCEPTABLE";
+    public const INTERNAL_SERVER_ERROR_TEXT = "INTERNAL SERVER ERROR";
+
+    public const RESPONSE_CODE_OK              = 1000;
+    public const RESPONSE_CODE_NOT_OK          = 2000;
+    public const RESPONSE_CODE_SESSION_EXPIRED = 3000;
+    public const RESPONSE_CODE_NEEDS_UPGRADE   = 4000;
+
+    public const HEADER_CONTENT_TYPE = "Content-Type";
+
 
 }
