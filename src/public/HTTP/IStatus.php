@@ -30,6 +30,7 @@ interface IStatus {
     public const NOT_FOUND             = 404;
     public const NOT_ALLOWED           = 405;
     public const NOT_ACCEPTABLE        = 406;
+    public const GONE                  = 410;
     public const INTERNAL_SERVER_ERROR = 500;
 
     public const OK_TEXT                    = "OK";
@@ -39,6 +40,7 @@ interface IStatus {
     public const NOT_FOUND_TEXT             = "NOT FOUND";
     public const NOT_ALLOWED_TEXT           = "NOT ALLOWED";
     public const NOT_ACCEPTABLE_TEXT        = "NOT ACCEPTABLE";
+    public const GONE_TEXT                  = "GONE";
     public const INTERNAL_SERVER_ERROR_TEXT = "INTERNAL SERVER ERROR";
 
     public const RESPONSE_CODE_OK              = 1000;
