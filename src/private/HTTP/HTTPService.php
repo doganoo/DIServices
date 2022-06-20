@@ -59,6 +59,8 @@ class HTTPService implements IHTTPService {
                 return IStatus::NOT_ACCEPTABLE_TEXT;
             case IStatus::GONE:
                 return IStatus::GONE_TEXT;
+            case IStatus::PAYLOAD_TOO_LARGE:
+                return IStatus::PAYLOAD_TOO_LARGE_TEXT;
             case IStatus::INTERNAL_SERVER_ERROR:
                 return IStatus::INTERNAL_SERVER_ERROR_TEXT;
             default:

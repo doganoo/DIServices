@@ -31,17 +31,19 @@ interface IStatus {
     public const NOT_ALLOWED           = 405;
     public const NOT_ACCEPTABLE        = 406;
     public const GONE                  = 410;
+    public const PAYLOAD_TOO_LARGE     = 413;
     public const INTERNAL_SERVER_ERROR = 500;
 
-    public const OK_TEXT                    = "OK";
-    public const BAD_REQUEST_TEXT           = "BAD REQUEST";
-    public const UNAUTHORIZED_TEXT          = "UNAUTHORIZED";
-    public const FORBIDDEN_TEXT             = "FORBIDDEN";
-    public const NOT_FOUND_TEXT             = "NOT FOUND";
-    public const NOT_ALLOWED_TEXT           = "NOT ALLOWED";
-    public const NOT_ACCEPTABLE_TEXT        = "NOT ACCEPTABLE";
-    public const GONE_TEXT                  = "GONE";
-    public const INTERNAL_SERVER_ERROR_TEXT = "INTERNAL SERVER ERROR";
+    public const OK_TEXT                     = "OK";
+    public const BAD_REQUEST_TEXT            = "BAD REQUEST";
+    public const UNAUTHORIZED_TEXT           = "UNAUTHORIZED";
+    public const FORBIDDEN_TEXT              = "FORBIDDEN";
+    public const NOT_FOUND_TEXT              = "NOT FOUND";
+    public const NOT_ALLOWED_TEXT            = "NOT ALLOWED";
+    public const NOT_ACCEPTABLE_TEXT         = "NOT ACCEPTABLE";
+    public const GONE_TEXT                   = "GONE";
+    public const PAYLOAD_TOO_LARGE_TEXT = "PAYLOAD TOO LARGE";
+    public const INTERNAL_SERVER_ERROR_TEXT  = "INTERNAL SERVER ERROR";
 
     public const RESPONSE_CODE_OK              = 1000;
     public const RESPONSE_CODE_NOT_OK          = 2000;

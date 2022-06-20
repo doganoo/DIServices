@@ -112,6 +112,7 @@ class HTTPServiceTest extends TestCase {
             , [IStatus::NOT_ALLOWED, IStatus::NOT_ALLOWED_TEXT]
             , [IStatus::NOT_ACCEPTABLE, IStatus::NOT_ACCEPTABLE_TEXT]
             , [IStatus::GONE, IStatus::GONE_TEXT]
+            , [IStatus::PAYLOAD_TOO_LARGE, IStatus::PAYLOAD_TOO_LARGE_TEXT]
             , [IStatus::INTERNAL_SERVER_ERROR, IStatus::INTERNAL_SERVER_ERROR_TEXT]
         ];
     }
