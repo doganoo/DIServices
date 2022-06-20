@@ -47,8 +47,20 @@ class HTTPService implements IHTTPService {
                 return IStatus::OK_TEXT;
             case IStatus::BAD_REQUEST:
                 return IStatus::BAD_REQUEST_TEXT;
+            case IStatus::UNAUTHORIZED:
+                return IStatus::UNAUTHORIZED_TEXT;
+            case IStatus::FORBIDDEN:
+                return IStatus::FORBIDDEN_TEXT;
             case IStatus::NOT_FOUND:
                 return IStatus::NOT_FOUND_TEXT;
+            case IStatus::NOT_ALLOWED:
+                return IStatus::NOT_ALLOWED_TEXT;
+            case IStatus::NOT_ACCEPTABLE:
+                return IStatus::NOT_ACCEPTABLE_TEXT;
+            case IStatus::GONE:
+                return IStatus::GONE_TEXT;
+            case IStatus::INTERNAL_SERVER_ERROR:
+                return IStatus::INTERNAL_SERVER_ERROR_TEXT;
             default:
                 throw new UnknownStatusCodeException();
         }

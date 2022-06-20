@@ -49,7 +49,7 @@ class HTTPServiceTest extends TestCase {
 
     public function testException(): void {
         try {
-            $this->httpService->translateCode(500);
+            $this->httpService->translateCode(999);
         } catch (UnknownStatusCodeException $exception) {
             $this->assertTrue(true);
         }
@@ -106,7 +106,13 @@ class HTTPServiceTest extends TestCase {
         return [
             [IStatus::OK, IStatus::OK_TEXT]
             , [IStatus::BAD_REQUEST, IStatus::BAD_REQUEST_TEXT]
+            , [IStatus::UNAUTHORIZED, IStatus::UNAUTHORIZED_TEXT]
+            , [IStatus::FORBIDDEN, IStatus::FORBIDDEN_TEXT]
             , [IStatus::NOT_FOUND, IStatus::NOT_FOUND_TEXT]
+            , [IStatus::NOT_ALLOWED, IStatus::NOT_ALLOWED_TEXT]
+            , [IStatus::NOT_ACCEPTABLE, IStatus::NOT_ACCEPTABLE_TEXT]
+            , [IStatus::GONE, IStatus::GONE_TEXT]
+            , [IStatus::INTERNAL_SERVER_ERROR, IStatus::INTERNAL_SERVER_ERROR_TEXT]
         ];
     }
 
