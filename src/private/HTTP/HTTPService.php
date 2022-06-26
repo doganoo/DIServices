@@ -43,8 +43,34 @@ class HTTPService implements IHTTPService {
      */
     public function translateCode(int $statusCode): string {
         switch ($statusCode) {
+            case IStatus::CONTINUE:
+                return IStatus::CONTINUE_TEXT;
+            case IStatus::SWITCHING_PROTOCOLS:
+                return IStatus::SWITCHING_PROTOCOLS_TEXT;
+            case IStatus::PROCESSING:
+                return IStatus::PROCESSING_TEXT;
+            case IStatus::EARLY_HINTS:
+                return IStatus::EARLY_HINTS_TEXT;
             case IStatus::OK:
                 return IStatus::OK_TEXT;
+            case IStatus::CREATED:
+                return IStatus::CREATED_TEXT;
+            case IStatus::ACCEPTED:
+                return IStatus::ACCEPTED_TEXT;
+            case IStatus::NON_AUTHORITATIVE_INFORMATION:
+                return IStatus::NON_AUTHORITATIVE_INFORMATION_TEXT;
+            case IStatus::NO_CONTENT:
+                return IStatus::NO_CONTENT_TEXT;
+            case IStatus::RESET_CONTENT:
+                return IStatus::RESET_CONTENT_TEXT;
+            case IStatus::PARTIAL_CONTENT:
+                return IStatus::PARTIAL_CONTENT_TEXT;
+            case IStatus::MULTI_STATUS:
+                return IStatus::MULTI_STATUS_TEXT;
+            case IStatus::ALREADY_REPORTED:
+                return IStatus::ALREADY_REPORTED_TEXT;
+            case IStatus::IM_USED:
+                return IStatus::IM_USED_TEXT;
             case IStatus::BAD_REQUEST:
                 return IStatus::BAD_REQUEST_TEXT;
             case IStatus::UNAUTHORIZED:
@@ -63,6 +89,8 @@ class HTTPService implements IHTTPService {
                 return IStatus::PAYLOAD_TOO_LARGE_TEXT;
             case IStatus::INTERNAL_SERVER_ERROR:
                 return IStatus::INTERNAL_SERVER_ERROR_TEXT;
+            case IStatus::NOT_IMPLEMENTED:
+                return IStatus::NOT_IMPLEMENTED_TEXT;
             default:
                 throw new UnknownStatusCodeException();
         }

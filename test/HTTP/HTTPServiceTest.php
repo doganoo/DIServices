@@ -104,7 +104,20 @@ class HTTPServiceTest extends TestCase {
 
     public function getStatusCodes(): array {
         return [
-            [IStatus::OK, IStatus::OK_TEXT]
+            [IStatus::CONTINUE, IStatus::CONTINUE_TEXT]
+            , [IStatus::SWITCHING_PROTOCOLS, IStatus::SWITCHING_PROTOCOLS_TEXT]
+            , [IStatus::PROCESSING, IStatus::PROCESSING_TEXT]
+            , [IStatus::EARLY_HINTS, IStatus::EARLY_HINTS_TEXT]
+            , [IStatus::OK, IStatus::OK_TEXT]
+            , [IStatus::CREATED, IStatus::CREATED_TEXT]
+            , [IStatus::ACCEPTED, IStatus::ACCEPTED_TEXT]
+            , [IStatus::NON_AUTHORITATIVE_INFORMATION, IStatus::NON_AUTHORITATIVE_INFORMATION_TEXT]
+            , [IStatus::NO_CONTENT, IStatus::NO_CONTENT_TEXT]
+            , [IStatus::RESET_CONTENT, IStatus::RESET_CONTENT_TEXT]
+            , [IStatus::PARTIAL_CONTENT, IStatus::PARTIAL_CONTENT_TEXT]
+            , [IStatus::MULTI_STATUS, IStatus::MULTI_STATUS_TEXT]
+            , [IStatus::ALREADY_REPORTED, IStatus::ALREADY_REPORTED_TEXT]
+            , [IStatus::IM_USED, IStatus::IM_USED_TEXT]
             , [IStatus::BAD_REQUEST, IStatus::BAD_REQUEST_TEXT]
             , [IStatus::UNAUTHORIZED, IStatus::UNAUTHORIZED_TEXT]
             , [IStatus::FORBIDDEN, IStatus::FORBIDDEN_TEXT]
@@ -114,6 +127,7 @@ class HTTPServiceTest extends TestCase {
             , [IStatus::GONE, IStatus::GONE_TEXT]
             , [IStatus::PAYLOAD_TOO_LARGE, IStatus::PAYLOAD_TOO_LARGE_TEXT]
             , [IStatus::INTERNAL_SERVER_ERROR, IStatus::INTERNAL_SERVER_ERROR_TEXT]
+            , [IStatus::NOT_IMPLEMENTED, IStatus::NOT_IMPLEMENTED_TEXT]
         ];
     }
 

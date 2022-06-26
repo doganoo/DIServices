@@ -23,7 +23,22 @@ namespace doganoo\DI\HTTP;
 
 interface IStatus {
 
-    public const OK                    = 200;
+    public const CONTINUE            = 100;
+    public const SWITCHING_PROTOCOLS = 101;
+    public const PROCESSING          = 102;
+    public const EARLY_HINTS         = 103;
+
+    public const OK                            = 200;
+    public const CREATED                       = 201;
+    public const ACCEPTED                      = 202;
+    public const NON_AUTHORITATIVE_INFORMATION = 203;
+    public const NO_CONTENT                    = 204;
+    public const RESET_CONTENT                 = 205;
+    public const PARTIAL_CONTENT               = 206;
+    public const MULTI_STATUS                  = 207;
+    public const ALREADY_REPORTED              = 208;
+    public const IM_USED                       = 226;
+
     public const BAD_REQUEST           = 400;
     public const UNAUTHORIZED          = 401;
     public const FORBIDDEN             = 403;
@@ -33,17 +48,34 @@ interface IStatus {
     public const GONE                  = 410;
     public const PAYLOAD_TOO_LARGE     = 413;
     public const INTERNAL_SERVER_ERROR = 500;
+    public const NOT_IMPLEMENTED       = 501;
 
-    public const OK_TEXT                     = "OK";
-    public const BAD_REQUEST_TEXT            = "BAD REQUEST";
-    public const UNAUTHORIZED_TEXT           = "UNAUTHORIZED";
-    public const FORBIDDEN_TEXT              = "FORBIDDEN";
-    public const NOT_FOUND_TEXT              = "NOT FOUND";
-    public const NOT_ALLOWED_TEXT            = "NOT ALLOWED";
-    public const NOT_ACCEPTABLE_TEXT         = "NOT ACCEPTABLE";
-    public const GONE_TEXT                   = "GONE";
-    public const PAYLOAD_TOO_LARGE_TEXT = "PAYLOAD TOO LARGE";
-    public const INTERNAL_SERVER_ERROR_TEXT  = "INTERNAL SERVER ERROR";
+    public const CONTINUE_TEXT            = "CONTINUE";
+    public const SWITCHING_PROTOCOLS_TEXT = "SWITCHING PROTOCOLS";
+    public const PROCESSING_TEXT          = "PROCESSING";
+    public const EARLY_HINTS_TEXT         = "EARLY HINTS";
+
+    public const OK_TEXT                            = "OK";
+    public const CREATED_TEXT                       = "CREATED";
+    public const ACCEPTED_TEXT                      = "ACCEPTED";
+    public const NON_AUTHORITATIVE_INFORMATION_TEXT = "NON-AUTHORITATIVE INFORMATION";
+    public const NO_CONTENT_TEXT                    = "NO CONTENT";
+    public const RESET_CONTENT_TEXT                 = "RESET CONTENT";
+    public const PARTIAL_CONTENT_TEXT               = "PARTIAL CONTENT";
+    public const MULTI_STATUS_TEXT                  = "MULTI-STATUS";
+    public const ALREADY_REPORTED_TEXT              = "ALREADY REPORTED";
+    public const IM_USED_TEXT                       = "IM USED";
+
+    public const BAD_REQUEST_TEXT           = "BAD REQUEST";
+    public const UNAUTHORIZED_TEXT          = "UNAUTHORIZED";
+    public const FORBIDDEN_TEXT             = "FORBIDDEN";
+    public const NOT_FOUND_TEXT             = "NOT FOUND";
+    public const NOT_ALLOWED_TEXT           = "NOT ALLOWED";
+    public const NOT_ACCEPTABLE_TEXT        = "NOT ACCEPTABLE";
+    public const GONE_TEXT                  = "GONE";
+    public const PAYLOAD_TOO_LARGE_TEXT     = "PAYLOAD TOO LARGE";
+    public const INTERNAL_SERVER_ERROR_TEXT = "INTERNAL SERVER ERROR";
+    public const NOT_IMPLEMENTED_TEXT       = "NOT IMPLEMENTED";
 
     public const RESPONSE_CODE_OK              = 1000;
     public const RESPONSE_CODE_NOT_OK          = 2000;
