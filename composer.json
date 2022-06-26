@@ -16,7 +16,9 @@
     "ext-pdo": "*",
     "doganoo/php-algorithms": "^2.0",
     "ezyang/htmlpurifier": "^4.13",
-    "ext-openssl": "*"
+    "ext-openssl": "*",
+    "psr/http-message": "^1.0",
+    "ext-fileinfo": "*"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.15",
