@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace doganoo\DIP\HTTP;
 
+use doganoo\DI\Entity\File\IFile;
 use doganoo\DI\HTTP\IUploadedFileService;
+use doganoo\DIP\Entity\File\File;
 use Psr\Http\Message\UploadedFileInterface;
 
 class UploadedFileService implements IUploadedFileService {
@@ -22,6 +24,24 @@ class UploadedFileService implements IUploadedFileService {
             && true === is_string($type)
             && true === $isUploadedFile
             && $size > $maxSize;
+    }
+
+    public function toFile(UploadedFileInterface $uploadedFile): IFile {
+        $uploadedFile->getStream()->rewind();
+        $file = new File();
+        $file->setName(
+            $uploadedFile->getClientFilename()
+        );
+        $file->setContent(
+            $uploadedFile->getStream()->getContents()
+        );
+        $file->setType(
+            $uploadedFile->getClientMediaType()
+        );
+        $file->setSize(
+            $uploadedFile->getSize()
+        );
+        return $file;
     }
 
 }

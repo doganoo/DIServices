@@ -22,9 +22,9 @@ declare(strict_types=1);
 namespace doganoo\DI\Entity\User;
 
 use DateTimeInterface;
-use doganoo\DI\Entity\IEntity;
+use doganoo\DI\Entity\IJsonEntity;
 
-interface IUser extends IEntity {
+interface IUser extends IJsonEntity {
 
     /**
      * @return int

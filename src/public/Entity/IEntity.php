@@ -21,9 +21,6 @@ declare(strict_types=1);
 
 namespace doganoo\DI\Entity;
 
-use JsonSerializable;
-
-interface IEntity extends JsonSerializable
-{
+interface IEntity {
 
 }
