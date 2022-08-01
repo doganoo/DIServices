@@ -63,7 +63,7 @@ class AESEncryptionService implements IAESEncryptionService {
             , true
         );
 
-        if ($newHash !== $hash) {
+        if (false === hash_equals($newHash, $hash)) {
             throw new DIServicesException("hashes do not match. There was an error. Aborting encryption");
         }
 

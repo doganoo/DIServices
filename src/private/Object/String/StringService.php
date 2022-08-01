@@ -65,4 +65,37 @@ class StringService implements IStringService {
         return strcasecmp($first, $second) === 0;
     }
 
+    /**
+     * Checks whether $second exists in $first
+     *
+     * @param string $first  The string to check
+     * @param string $second The string to search
+     * @return bool
+     */
+    public function contains(string $first, string $second): bool {
+        // PHP < 8 returns true when looking for an empty string in
+        // another string. WTF.
+        if (strlen($first) > 0 && strlen($second) === 0) {
+            return false;
+        }
+        return strpos($first, $second) !== false;
+    }
+
+    /**
+     * Returns an intersection of $first and $second
+     *
+     * @param string $first  The first string
+     * @param string $second The second string
+     * @return string
+     */
+    public function intersect(string $first, string $second): string {
+        $firstArray  = str_split($first);
+        $secondArray = str_split($second);
+        $intersected = array_intersect(
+            array_unique($firstArray)
+            , array_unique($secondArray)
+        );
+        return implode("", $intersected);
+    }
+
 }

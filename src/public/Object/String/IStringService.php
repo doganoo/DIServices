@@ -62,4 +62,22 @@ interface IStringService {
      */
     public function equalsIgnoreCase(string $first, string $second): bool;
 
+    /**
+     * Checks whether $second exists in $first
+     *
+     * @param string $first  The string to check
+     * @param string $second The string to search
+     * @return bool
+     */
+    public function contains(string $first, string $second): bool;
+
+    /**
+     * Returns an intersection of $first and $second
+     *
+     * @param string $first  The first string
+     * @param string $second The second string
+     * @return string
+     */
+    public function intersect(string $first, string $second): string;
+
 }

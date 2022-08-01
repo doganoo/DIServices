@@ -42,6 +42,33 @@ class StringServiceTest extends TestCase {
     private $stringService;
 
     /**
+     * @param string $first
+     * @param string $second
+     * @param string $result
+     * @return void
+     * @dataProvider getIntersection
+     */
+    public function testIntersection(string $first, string $second, string $result): void {
+        dump($this->stringService->intersect($first, $second));
+        $this->assertTrue(
+            $result === $this->stringService->intersect($first, $second)
+        );
+    }
+
+    /**
+     * @param string $first
+     * @param string $second
+     * @param bool   $success
+     * @return void
+     * @dataProvider getContainsData
+     */
+    public function testContains(string $first, string $second, bool $success): void {
+        $this->assertTrue(
+            $success === $this->stringService->contains($first, $second)
+        );
+    }
+
+    /**
      * @param string|null $value
      * @param bool        $valid
      *
@@ -123,6 +150,36 @@ class StringServiceTest extends TestCase {
                 "diservices"
                 , false
             ]
+        ];
+    }
+
+    public function getContainsData(): array {
+        return [
+            ["abcde", "bc", true],
+            ["abcde", "ab", true],
+            ["abcde", "a", true],
+            ["abcde", "e", true],
+            ["abcde", "cde", true],
+            ["abcde", "de", true],
+            ["abcde", "abcde", true],
+            ["abcde", "dgrdgsgrdfgdsf", false],
+            ["abcde", "sdgeagasfasef", false],
+            ["abcde", "", false],
+        ];
+    }
+
+    public function getIntersection(): array {
+        return [
+            ["abcde", "bc", "bc"],
+//            ["abcde", "ab", "ab"],
+//            ["abcde", "a", "a"],
+//            ["abcde", "e", "e"],
+//            ["abcde", "cde", "cde"],
+//            ["abcde", "de", "de"],
+//            ["abcde", "abcde", "abcde"],
+//            ["abcde", "dgrdgsgrdfgdsf", ""],
+//            ["abcde", "sdgeagasfasef", ""],
+//            ["abcde", "", ""],
         ];
     }
 
