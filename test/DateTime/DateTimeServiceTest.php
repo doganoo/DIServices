@@ -31,6 +31,7 @@ use DateTimeInterface;
 use doganoo\DI\DateTime\IDateTimeService;
 use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\DateTime\DateTimeService;
+use TypeError;
 
 class DateTimeServiceTest extends TestCase {
 
@@ -42,7 +43,7 @@ class DateTimeServiceTest extends TestCase {
      *
      * @dataProvider getTimestamps
      */
-    public function testFromTimestamp(int $timestamp) {
+    public function testFromTimestamp(int $timestamp): void {
         $dateTime = $this->dateTimeService->toDateTime($timestamp);
         $this->assertTrue($dateTime instanceof DateTimeInterface);
         $this->assertTrue($dateTime->getTimestamp() === $timestamp);
@@ -54,7 +55,7 @@ class DateTimeServiceTest extends TestCase {
      * @param int $days
      * @dataProvider getDateTimeDifferences
      */
-    public function testDateDifference(int $start, int $end, int $days) {
+    public function testDateDifference(int $start, int $end, int $days): void {
         $daysCalculated = $this->dateTimeService->getDifference(
             $this->dateTimeService->toDateTime($start)
             , $this->dateTimeService->toDateTime($end)
@@ -68,7 +69,7 @@ class DateTimeServiceTest extends TestCase {
      *
      * @dataProvider getFormattedTimestamps
      */
-    public function testFromFormat(string $format, bool $isNull) {
+    public function testFromFormat(string $format, bool $isNull): void {
         $dateTime = $this->dateTimeService->fromFormat($format);
 
         if (true === $isNull) {
@@ -84,7 +85,7 @@ class DateTimeServiceTest extends TestCase {
      * @param string            $formatted
      * @dataProvider getYMDHIS
      */
-    public function testToYMDHIS(DateTimeInterface $dateTime, string $formatted) {
+    public function testToYMDHIS(DateTimeInterface $dateTime, string $formatted): void {
         $string = $this->dateTimeService->toYMDHIS($dateTime);
         $this->assertTrue($string === $formatted);
     }
@@ -94,7 +95,7 @@ class DateTimeServiceTest extends TestCase {
      * @param string            $formatted
      * @dataProvider getDMYHIS
      */
-    public function testToDMYHIS(DateTimeInterface $dateTime, string $formatted) {
+    public function testToDMYHIS(DateTimeInterface $dateTime, string $formatted): void {
         $string = $this->dateTimeService->toDMYHIS($dateTime);
         $this->assertTrue($string === $formatted);
     }
@@ -104,7 +105,7 @@ class DateTimeServiceTest extends TestCase {
      * @param string            $formatted
      * @dataProvider getHIS
      */
-    public function testToHIS(DateTimeInterface $dateTime, string $formatted) {
+    public function testToHIS(DateTimeInterface $dateTime, string $formatted): void {
         $string = $this->dateTimeService->toHIS($dateTime);
         $this->assertTrue($string === $formatted);
     }
@@ -114,11 +115,18 @@ class DateTimeServiceTest extends TestCase {
      * @param string            $formatted
      * @dataProvider getYMD
      */
-    public function testToYMD(DateTimeInterface $dateTime, string $formatted) {
+    public function testToYMD(DateTimeInterface $dateTime, string $formatted): void {
         $string = $this->dateTimeService->toYMD($dateTime);
         $this->assertTrue($string === $formatted);
     }
 
+    /**
+     * @return void
+     */
+    public function testNull(): void {
+        $this->expectException(TypeError::class);
+        $this->dateTimeService->toYMD(null);
+    }
 
     public function getYMD(): array {
         return [
@@ -185,6 +193,7 @@ class DateTimeServiceTest extends TestCase {
             ,
         ];
     }
+
     public function getDMYHIS(): array {
         return [
             [

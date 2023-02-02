@@ -49,7 +49,6 @@ class StringServiceTest extends TestCase {
      * @dataProvider getIntersection
      */
     public function testIntersection(string $first, string $second, string $result): void {
-        dump($this->stringService->intersect($first, $second));
         $this->assertTrue(
             $result === $this->stringService->intersect($first, $second)
         );
