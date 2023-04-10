@@ -21,6 +21,7 @@ declare(strict_types=1);
 
 namespace doganoo\DIP\DateTime;
 
+use DateTimeInterface;
 use doganoo\DI\DateTime\ICalendarService;
 use doganoo\DI\DateTime\IDateTimeService;
 use doganoo\PHPAlgorithms\Datastructure\Table\HashTable;
@@ -165,6 +166,10 @@ class CalendarService implements ICalendarService {
         );
 
         return $holidays;
+    }
+
+    public function hasOverlap(DateTimeInterface $s1, DateTimeInterface $e1, DateTimeInterface $s2, DateTimeInterface $e2): bool {
+        return $s1 < $e2 && $s2 <= $e1;
     }
 
 }

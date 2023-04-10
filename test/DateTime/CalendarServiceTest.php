@@ -20,6 +20,7 @@ declare(strict_types=1);
 
 namespace doganoo\DI\Test\DateTime;
 
+use DateTimeImmutable;
 use DateTimeInterface;
 use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\DateTime\CalendarService;
@@ -46,6 +47,88 @@ class CalendarServiceTest extends TestCase {
             $toCompare = $timestamps[$holidayKey] ?? null;
             $this->assertTrue($dateTime === $toCompare);
         }
+    }
+
+    /**
+     * @param DateTimeInterface $s1
+     * @param DateTimeInterface $s2
+     * @param DateTimeInterface $e1
+     * @param DateTimeInterface $e2
+     * @param bool              $result
+     * @return void
+     * @dataProvider hasOverlap
+     */
+    public function testHasOverlap(
+        DateTimeInterface $s1,
+        DateTimeInterface $e1,
+        DateTimeInterface $s2,
+        DateTimeInterface $e2,
+        bool              $result
+    ): void {
+        $this->assertTrue(
+            $result === $this->calendarService->hasOverlap($s1, $e1, $s2, $e2)
+        );
+    }
+
+    public function hasOverlap(): array {
+        return [
+            [
+                new DateTimeImmutable('2023-03-01'), // s1
+                new DateTimeImmutable('2023-03-30'), // e1
+                new DateTimeImmutable('2023-03-15'), // s2
+                new DateTimeImmutable('2023-04-15'), // e2
+                true                                         // result
+            ],
+            [
+                new DateTimeImmutable('2023-03-01'), // s1
+                new DateTimeImmutable('2023-03-30'), // e1
+                new DateTimeImmutable('2023-02-01'), // s2
+                new DateTimeImmutable('2023-03-15'), // e2
+                true                                         // result
+            ],
+            [
+                new DateTimeImmutable('2023-03-01'), // s1
+                new DateTimeImmutable('2023-03-30'), // e1
+                new DateTimeImmutable('2023-03-02'), // s2
+                new DateTimeImmutable('2023-03-10'), // e2
+                true                                         // result
+            ],
+            [
+                new DateTimeImmutable('2023-03-01'), // s1
+                new DateTimeImmutable('2023-03-30'), // e1
+                new DateTimeImmutable('2023-01-01'), // s2
+                new DateTimeImmutable('2023-01-18'), // e2
+                false                                         // result
+            ],
+            [
+                new DateTimeImmutable('2023-01-01'), // s1
+                new DateTimeImmutable('2023-01-30'), // e1
+                new DateTimeImmutable('2023-03-01'), // s2
+                new DateTimeImmutable('2023-03-22'), // e2
+                false                                         // result
+            ],
+            [
+                new DateTimeImmutable('2023-03-01'), // s1
+                new DateTimeImmutable('2023-01-15'), // e1
+                new DateTimeImmutable('2023-01-01'), // s2
+                new DateTimeImmutable('2023-06-01'), // e2
+                true                                         // result
+            ],
+            [
+                new DateTimeImmutable('2023-03-01'), // s1
+                new DateTimeImmutable('2023-03-15'), // e1
+                new DateTimeImmutable('2023-01-01'), // s2
+                new DateTimeImmutable('2023-03-01'), // e2
+                false                                         // result
+            ],
+            [
+                new DateTimeImmutable('2023-03-01'), // s1
+                new DateTimeImmutable('2023-03-15'), // e1
+                new DateTimeImmutable('2023-03-15'), // s2
+                new DateTimeImmutable('2023-04-01'), // e2
+                true                                         // result
+            ],
+        ];
     }
 
     public function getGermanPublicHolidays(): array {
