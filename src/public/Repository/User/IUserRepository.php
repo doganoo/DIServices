@@ -38,6 +38,8 @@ interface IUserRepository {
 
     public function getUserByMail(string $mail): IUser;
 
+    public function getUserByToken(string $token): IUser;
+
     public function updateUser(IUser $user): IUser;
 
     public function insertUser(IUser $user): IUser;
