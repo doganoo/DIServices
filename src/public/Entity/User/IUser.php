@@ -27,9 +27,9 @@ use doganoo\DI\Entity\IJsonEntity;
 interface IUser extends IJsonEntity {
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int;
+    public function getId(): string;
 
     /**
      * @return string
