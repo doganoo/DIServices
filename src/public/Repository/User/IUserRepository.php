@@ -22,6 +22,7 @@ declare(strict_types=1);
 namespace doganoo\DI\Repository\User;
 
 use doganoo\DI\Entity\User\IUser;
+use doganoo\PHPAlgorithms\Datastructure\Lists\ArrayList\ArrayList;
 
 /**
  * Interface IUserRepository
@@ -43,5 +44,7 @@ interface IUserRepository {
     public function updateUser(IUser $user): IUser;
 
     public function insertUser(IUser $user): IUser;
+
+    public function getAll(): ArrayList;
 
 }
