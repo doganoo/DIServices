@@ -32,7 +32,7 @@ use doganoo\DI\Entity\User\IUser;
  */
 interface IUserRepository {
 
-    public function getUserById(int $id): IUser;
+    public function getUserById(string $id): IUser;
 
     public function getUserByName(string $name): IUser;
 
