@@ -19,7 +19,8 @@
     "ext-openssl": "*",
     "psr/http-message": "^1.0",
     "ext-fileinfo": "*",
-    "laminas/laminas-crypt": "^3.9"
+    "laminas/laminas-crypt": "^3.9",
+    "ramsey/uuid": "^4.7"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.15",
