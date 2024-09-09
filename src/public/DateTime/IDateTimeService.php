@@ -124,4 +124,12 @@ interface IDateTimeService {
      */
     public function toDMYHIS(DateTimeInterface $dateTime): string;
 
+    /**
+     * Checks whether a given DateTime is expired, meaning < now
+     *
+     * @param DateTimeInterface $dateTime The date to check
+     * @return bool
+     */
+    public function exExpired(DateTimeInterface $dateTime): bool;
+
 }

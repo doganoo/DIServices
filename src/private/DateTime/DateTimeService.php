@@ -27,6 +27,7 @@ declare(strict_types=1);
 namespace doganoo\DIP\DateTime;
 
 use DateTime;
+use DateTimeImmutable;
 use DateTimeInterface;
 use doganoo\DI\DateTime\IDateTimeService;
 use Exception;
@@ -142,7 +143,18 @@ class DateTimeService implements IDateTimeService {
      * @return string
      */
     public function toHis(DateTimeInterface $dateTime): string {
-       return $dateTime->format(IDateTimeService::FORMAT_HIS);
+        return $dateTime->format(IDateTimeService::FORMAT_HIS);
+    }
+
+    /**
+     * Checks whether a given DateTime is expired, meaning < now
+     *
+     * @param DateTimeInterface $dateTime The date to check
+     * @return bool
+     */
+    public function exExpired(DateTimeInterface $dateTime): bool {
+        $now = new DateTimeImmutable();
+        return $dateTime < $now;
     }
 
 }
