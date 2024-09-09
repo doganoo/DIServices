@@ -152,7 +152,7 @@ class DateTimeService implements IDateTimeService {
      * @param DateTimeInterface $dateTime The date to check
      * @return bool
      */
-    public function exExpired(DateTimeInterface $dateTime): bool {
+    public function isExpired(DateTimeInterface $dateTime): bool {
         $now = new DateTimeImmutable();
         return $dateTime < $now;
     }
