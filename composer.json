@@ -20,11 +20,11 @@
     "psr/http-message": "^1.0",
     "ext-fileinfo": "*",
     "laminas/laminas-crypt": "^3.9",
-    "ramsey/uuid": "^4.7"
+    "ramsey/uuid": "^4.7",
+    "symfony/var-dumper": "^7.2"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.15",
-    "symfony/var-dumper": "^5.4",
     "filp/whoops": "^2.7",
     "mockery/mockery": "^1.4",
     "phpcompatibility/php-compatibility": "^9.3",
