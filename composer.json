@@ -19,7 +19,6 @@
     "ext-openssl": "*",
     "psr/http-message": "^1.0",
     "ext-fileinfo": "*",
-    "laminas/laminas-crypt": "^3.9",
     "ramsey/uuid": "^4.7",
     "symfony/var-dumper": "^7.2"
   },
