@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "15a9ae86e9f5eb44e08d11c259ab02b0",
+    "content-hash": "a764371e9f8443a786acdfa3ed451b5d",
     "packages": [
         {
             "name": "brick/math",
@@ -623,6 +623,48 @@
                 }
             ],
             "time": "2025-04-09T08:14:01+00:00"
+        },
+        {
+            "name": "ucarsolutions/entities",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ucar-Solutions/Entities.git",
+                "reference": "0ffd7081354a6323449d7cc1c986100c6fe3c5b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ucar-Solutions/Entities/zipball/0ffd7081354a6323449d7cc1c986100c6fe3c5b6",
+                "reference": "0ffd7081354a6323449d7cc1c986100c6fe3c5b6",
+                "shasum": ""
+            },
+            "require": {
+                "doganoo/php-algorithms": "^2.1",
+                "php": ">8.1"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "UcarSolutions\\Entities\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dogan Ucar",
+                    "email": "dogan@dogan-ucar.de"
+                }
+            ],
+            "description": "A collection of commonly used entities",
+            "support": {
+                "issues": "https://github.com/Ucar-Solutions/Entities/issues",
+                "source": "https://github.com/Ucar-Solutions/Entities/tree/main"
+            },
+            "time": "2025-05-05T17:21:50+00:00"
         }
     ],
     "packages-dev": [
@@ -4417,9 +4459,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
-        "roave/security-advisories": 20
+        "roave/security-advisories": 20,
+        "ucarsolutions/entities": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

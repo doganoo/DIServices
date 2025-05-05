@@ -20,7 +20,8 @@
     "psr/http-message": "^1.0",
     "ext-fileinfo": "*",
     "ramsey/uuid": "^4.7",
-    "symfony/var-dumper": "^7.2"
+    "symfony/var-dumper": "^7.2",
+    "ucarsolutions/entities": "dev-main"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.15",
@@ -39,7 +40,7 @@
       "doganoo\\DI\\Test\\": "test/"
     }
   },
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "scripts": {
     "add-php-compatibility": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
     "php-compatibility": "./vendor/bin/phpcs -p . --standard=PHPCompatibility --runtime-set testVersion 8.0-8.1 --extensions=php --ignore=vendor/",

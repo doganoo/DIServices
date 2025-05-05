@@ -21,8 +21,8 @@ declare(strict_types=1);
 
 namespace doganoo\DI\Repository\User;
 
-use doganoo\DI\Entity\User\UserInterface;
 use doganoo\PHPAlgorithms\Datastructure\Lists\ArrayList\ArrayList;
+use UcarSolutions\Entities\User\UserInterface;
 
 /**
  * Interface IUserRepository
