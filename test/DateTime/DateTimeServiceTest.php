@@ -28,14 +28,14 @@ namespace doganoo\DI\Test\DateTime;
 
 use DateTime;
 use DateTimeInterface;
-use doganoo\DI\DateTime\IDateTimeService;
+use doganoo\DI\DateTime\DateTimeServiceInterface;
 use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\DateTime\DateTimeService;
 use TypeError;
 
 class DateTimeServiceTest extends TestCase {
 
-    /** @var IDateTimeService */
+    /** @var DateTimeServiceInterface */
     private $dateTimeService;
 
     /**

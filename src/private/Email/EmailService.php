@@ -22,7 +22,7 @@ declare(strict_types=1);
 
 namespace doganoo\DIP\Email;
 
-use doganoo\DI\Email\IEmailService;
+use doganoo\DI\Email\EmailServiceInterface;
 
 /**
  * Class EmailService
@@ -30,7 +30,7 @@ use doganoo\DI\Email\IEmailService;
  * @package doganoo\DIP\Email
  * @author  Dogan Ucar <dogan@dogan-ucar.de>
  */
-class EmailService implements IEmailService {
+class EmailService implements EmailServiceInterface {
 
     /**
      * Extracts email addresses from a text

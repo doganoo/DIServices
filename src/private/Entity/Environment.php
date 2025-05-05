@@ -4,22 +4,15 @@ declare(strict_types=1);
 namespace doganoo\DIP\Entity;
 
 use DateTimeInterface;
-use doganoo\DI\Entity\IEnvironment;
+use doganoo\DI\Entity\EnvironmentInterface;
 
-class Environment implements IEnvironment {
-
-    private string            $id;
-    private string            $value;
-    private DateTimeInterface $createTs;
+class Environment implements EnvironmentInterface {
 
     public function __construct(
-        string            $id,
-        string            $value,
-        DateTimeInterface $createTs
+        private string            $id,
+        private string            $value,
+        private DateTimeInterface $createTs
     ) {
-        $this->id       = $id;
-        $this->value    = $value;
-        $this->createTs = $createTs;
     }
 
     public function getId(): string {

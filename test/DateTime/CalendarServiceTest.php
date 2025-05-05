@@ -22,13 +22,14 @@ namespace doganoo\DI\Test\DateTime;
 
 use DateTimeImmutable;
 use DateTimeInterface;
+use doganoo\DI\DateTime\CalendarServiceInterface;
 use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\DateTime\CalendarService;
 use doganoo\DIP\DateTime\DateTimeService;
 
 class CalendarServiceTest extends TestCase {
 
-    private CalendarService $calendarService;
+    private CalendarServiceInterface $calendarService;
 
     /**
      * @param int   $year

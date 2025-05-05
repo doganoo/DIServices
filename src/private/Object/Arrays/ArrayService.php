@@ -21,9 +21,9 @@ declare(strict_types=1);
 
 namespace doganoo\DIP\Object\Arrays;
 
-use doganoo\DI\Object\Arrays\IArrayService;
+use doganoo\DI\Object\Arrays\ArrayServiceInterface;
 
-class ArrayService implements IArrayService {
+class ArrayService implements ArrayServiceInterface {
 
     public function arrayFilterRecursive(array $array, $filterVal = null): array {
         foreach ($array as $key => & $value) { // mind the reference

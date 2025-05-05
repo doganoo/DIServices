@@ -3,31 +3,27 @@ declare(strict_types=1);
 
 namespace doganoo\DIP\Repository\Environment;
 
-use doganoo\DI\DateTime\IDateTimeService;
-use doganoo\DI\Entity\IEnvironment;
-use doganoo\DI\Repository\Environment\IEnvironmentRepository;
+use doganoo\DI\DateTime\DateTimeServiceInterface;
+use doganoo\DI\Entity\EnvironmentInterface;
+use doganoo\DI\Repository\Environment\EnvironmentRepositoryInterface;
 use doganoo\DIP\Entity\Environment;
 use doganoo\DIP\Entity\NullEnvironment;
 use doganoo\PHPAlgorithms\Datastructure\Table\HashTable;
 use PDO;
 
-class EnvironmentRepository implements IEnvironmentRepository {
+class EnvironmentRepository implements EnvironmentRepositoryInterface {
 
-    private string           $path;
-    private PDO              $database;
-    private IDateTimeService $dateTimeService;
+    private PDO $database;
 
     public function __construct(
-        IDateTimeService $dateTimeService,
-        string           $path
+        private DateTimeServiceInterface $dateTimeService,
+        private string                   $path
     ) {
-        $this->path            = $path;
-        $this->dateTimeService = $dateTimeService;
-        $this->database        = new PDO("sqlite:{$this->path}");
+        $this->database = new PDO("sqlite:{$this->path}");
         $this->createTable();
     }
 
-    public function insert(IEnvironment $environment): IEnvironment {
+    public function insert(EnvironmentInterface $environment): EnvironmentInterface {
         $statement = $this->database->prepare('INSERT INTO `instance` (`id`, `value`, `create_ts`) VALUES (:id, :value, :create_ts)');
         $statement->bindValue(':id', $environment->getId());
         $statement->bindValue(':value', $environment->getValue());
@@ -36,7 +32,7 @@ class EnvironmentRepository implements IEnvironmentRepository {
         return $environment;
     }
 
-    public function update(IEnvironment $environment): IEnvironment {
+    public function update(EnvironmentInterface $environment): EnvironmentInterface {
         $statement = $this->database->prepare('UPDATE `instance` SET `value` = :value, `create_ts` = :create_ts WHERE `id` = :id');
         $statement->bindValue(':id', $environment->getId());
         $statement->bindValue(':value', $environment->getValue());
@@ -66,7 +62,7 @@ class EnvironmentRepository implements IEnvironmentRepository {
         return $all;
     }
 
-    public function get(string $id): IEnvironment {
+    public function get(string $id): EnvironmentInterface {
         $statement = $this->database->prepare('SELECT 
                                                         `id`
                                                         , `value`

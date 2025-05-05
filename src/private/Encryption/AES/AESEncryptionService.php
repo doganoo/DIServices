@@ -3,30 +3,30 @@ declare(strict_types=1);
 
 namespace doganoo\DIP\Encryption\AES;
 
-use doganoo\DI\Encryption\AES\IAESEncryptionService;
+use doganoo\DI\Encryption\AES\AESEncryptionServiceInterface;
 use doganoo\DIP\Exception\DIServicesException;
 
-class AESEncryptionService implements IAESEncryptionService {
+class AESEncryptionService implements AESEncryptionServiceInterface {
 
     public function encrypt(string $passphrase, string $raw): string {
         $key = hash(
-            IAESEncryptionService::HASH_ALGORITHM
+            AESEncryptionServiceInterface::HASH_ALGORITHM
             , $passphrase
             , true
         );
 
-        $iv = openssl_random_pseudo_bytes(IAESEncryptionService::IV_LENGTH);
+        $iv = openssl_random_pseudo_bytes(AESEncryptionServiceInterface::IV_LENGTH);
 
         $cipherText = openssl_encrypt(
             $raw
-            , IAESEncryptionService::METHOD
+            , AESEncryptionServiceInterface::METHOD
             , (string) $key
             , OPENSSL_RAW_DATA
             , (string) $iv
         );
 
         $hash = hash_hmac(
-            IAESEncryptionService::HASH_ALGORITHM
+            AESEncryptionServiceInterface::HASH_ALGORITHM
             , (string) $cipherText
             , (string) $key
             , true
@@ -39,25 +39,25 @@ class AESEncryptionService implements IAESEncryptionService {
         $iv = substr(
             $encrypted
             , 0
-            , IAESEncryptionService::IV_LENGTH
+            , AESEncryptionServiceInterface::IV_LENGTH
         );
 
         $hash = substr(
             $encrypted
-            , IAESEncryptionService::IV_LENGTH
+            , AESEncryptionServiceInterface::IV_LENGTH
             , 32
         );
 
         $cipherText = substr($encrypted, 48);
 
         $key = hash(
-            IAESEncryptionService::HASH_ALGORITHM
+            AESEncryptionServiceInterface::HASH_ALGORITHM
             , $passphrase
             , true
         );
 
         $newHash = hash_hmac(
-            IAESEncryptionService::HASH_ALGORITHM
+            AESEncryptionServiceInterface::HASH_ALGORITHM
             , $cipherText
             , $key
             , true
@@ -69,7 +69,7 @@ class AESEncryptionService implements IAESEncryptionService {
 
         $decrypted = openssl_decrypt(
             $cipherText
-            , IAESEncryptionService::METHOD
+            , AESEncryptionServiceInterface::METHOD
             , $key
             , OPENSSL_RAW_DATA
             , $iv

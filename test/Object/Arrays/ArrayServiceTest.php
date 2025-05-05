@@ -21,13 +21,13 @@ declare(strict_types=1);
 
 namespace doganoo\DI\Test\Object\Arrays;
 
-use doganoo\DI\Object\Arrays\IArrayService;
+use doganoo\DI\Object\Arrays\ArrayServiceInterface;
 use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\Object\Arrays\ArrayService;
 
 class ArrayServiceTest extends TestCase {
 
-    private IArrayService $arrayService;
+    private ArrayServiceInterface $arrayService;
 
     protected function setUp(): void {
         parent::setUp();

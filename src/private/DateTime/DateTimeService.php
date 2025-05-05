@@ -29,7 +29,7 @@ namespace doganoo\DIP\DateTime;
 use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
-use doganoo\DI\DateTime\IDateTimeService;
+use doganoo\DI\DateTime\DateTimeServiceInterface;
 use Exception;
 
 /**
@@ -38,7 +38,7 @@ use Exception;
  * @package doganoo\DIP\DateTime
  * @author  Dogan Ucar <dogan@dogan-ucar.de>
  */
-class DateTimeService implements IDateTimeService {
+class DateTimeService implements DateTimeServiceInterface {
 
     /**
      * Converts an unix timestamp to an instance of DateTimeInterface
@@ -113,7 +113,7 @@ class DateTimeService implements IDateTimeService {
      * @return string
      */
     public function toYMDHIS(DateTimeInterface $dateTime): string {
-        return $dateTime->format(IDateTimeService::FORMAT_YMD_HIS);
+        return $dateTime->format(DateTimeServiceInterface::FORMAT_YMD_HIS);
     }
 
     /**
@@ -123,7 +123,7 @@ class DateTimeService implements IDateTimeService {
      * @return string
      */
     public function toYMD(DateTimeInterface $dateTime): string {
-        return $dateTime->format(IDateTimeService::FORMAT_YMD);
+        return $dateTime->format(DateTimeServiceInterface::FORMAT_YMD);
     }
 
     /**
@@ -133,7 +133,7 @@ class DateTimeService implements IDateTimeService {
      * @return string
      */
     public function toDMYHIS(DateTimeInterface $dateTime): string {
-        return $dateTime->format(IDateTimeService::FORMAT_DMY_HIS);
+        return $dateTime->format(DateTimeServiceInterface::FORMAT_DMY_HIS);
     }
 
     /**
@@ -143,7 +143,7 @@ class DateTimeService implements IDateTimeService {
      * @return string
      */
     public function toHis(DateTimeInterface $dateTime): string {
-        return $dateTime->format(IDateTimeService::FORMAT_HIS);
+        return $dateTime->format(DateTimeServiceInterface::FORMAT_HIS);
     }
 
     /**

@@ -26,9 +26,9 @@ declare(strict_types=1);
 
 namespace doganoo\DIP\Object\String;
 
-use doganoo\DI\Object\String\IStringService;
+use doganoo\DI\Object\String\StringServiceInterface;
 
-class StringService implements IStringService {
+class StringService implements StringServiceInterface {
 
     /**
      * Returns whether a string value is provided or not

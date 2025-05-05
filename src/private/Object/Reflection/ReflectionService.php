@@ -20,10 +20,10 @@ declare(strict_types=1);
 
 namespace doganoo\DIP\Object\Reflection;
 
-use doganoo\DI\Object\Reflection\IReflectionService;
+use doganoo\DI\Object\Reflection\ReflectionServiceInterface;
 use doganoo\PHPAlgorithms\Datastructure\Lists\ArrayList\ArrayList;
 
-class ReflectionService implements IReflectionService {
+class ReflectionService implements ReflectionServiceInterface {
 
     /**
      * Returns a list of all parent classes as string

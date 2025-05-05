@@ -21,13 +21,13 @@ declare(strict_types=1);
 
 namespace doganoo\DI\Test\Number;
 
-use doganoo\DI\Number\INumberService;
+use doganoo\DI\Number\NumberServiceInterface;
 use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\Number\NumberService;
 
 class NumberServiceTest extends TestCase {
 
-    private INumberService $numberService;
+    private NumberServiceInterface $numberService;
 
     protected function setUp(): void {
         parent::setUp();

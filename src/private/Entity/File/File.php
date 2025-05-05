@@ -3,27 +3,23 @@ declare(strict_types=1);
 
 namespace doganoo\DIP\Entity\File;
 
-use doganoo\DI\Entity\File\IFile;
+use doganoo\DI\Entity\File\FileInterface;
 
-class File implements IFile {
+final class File implements FileInterface {
 
-    private string $type;
-    private int    $size;
-    private string $name;
-    private string $content;
+    public function __construct(
+        private string $type,
+        private int    $size,
+        private string $name,
+        private string $content
+    ) {
+    }
 
     /**
      * @return string
      */
     public function getType(): string {
         return $this->type;
-    }
-
-    /**
-     * @param string $type
-     */
-    public function setType(string $type): void {
-        $this->type = $type;
     }
 
     /**
@@ -34,13 +30,6 @@ class File implements IFile {
     }
 
     /**
-     * @param int $size
-     */
-    public function setSize(int $size): void {
-        $this->size = $size;
-    }
-
-    /**
      * @return string
      */
     public function getName(): string {
@@ -48,24 +37,10 @@ class File implements IFile {
     }
 
     /**
-     * @param string $name
-     */
-    public function setName(string $name): void {
-        $this->name = $name;
-    }
-
-    /**
      * @return string
      */
     public function getContent(): string {
         return $this->content;
-    }
-
-    /**
-     * @param string $content
-     */
-    public function setContent(string $content): void {
-        $this->content = $content;
     }
 
     public function jsonSerialize(): array {

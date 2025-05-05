@@ -21,9 +21,9 @@ declare(strict_types=1);
 
 namespace doganoo\DIP\Object\Float;
 
-use doganoo\DI\Object\Float\IFloatService;
+use doganoo\DI\Object\Float\FloatServiceInterface;
 
-class FloatService implements IFloatService {
+class FloatService implements FloatServiceInterface {
 
     /**
      * Compares two floats

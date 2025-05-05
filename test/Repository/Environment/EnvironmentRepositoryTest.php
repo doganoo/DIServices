@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace doganoo\DI\Test\Repository\Environment;
 
 use DateTimeImmutable;
-use doganoo\DI\Repository\Environment\IEnvironmentRepository;
+use doganoo\DI\Repository\Environment\EnvironmentRepositoryInterface;
 use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\DateTime\DateTimeService;
 use doganoo\DIP\Entity\Environment;
@@ -14,8 +14,8 @@ use Ramsey\Uuid\Uuid;
 
 class EnvironmentRepositoryTest extends TestCase {
 
-    private IEnvironmentRepository $environmentRepository;
-    private string                 $path;
+    private EnvironmentRepositoryInterface $environmentRepository;
+    private string                         $path;
 
     protected function setUp(): void {
         parent::setUp();

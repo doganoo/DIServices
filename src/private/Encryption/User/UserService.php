@@ -22,7 +22,7 @@ declare(strict_types=1);
 
 namespace doganoo\DIP\Encryption\User;
 
-use doganoo\DI\Encryption\User\IUserService;
+use doganoo\DI\Encryption\User\UserServiceInterface;
 
 /**
  * Class UserService
@@ -30,7 +30,7 @@ use doganoo\DI\Encryption\User\IUserService;
  * @package doganoo\DIP\Encryption\User
  * @author  Dogan Ucar <dogan@dogan-ucar.de>
  */
-class UserService implements IUserService {
+class UserService implements UserServiceInterface {
 
     public function hashPassword(string $plain): string {
         return password_hash($plain, PASSWORD_BCRYPT);

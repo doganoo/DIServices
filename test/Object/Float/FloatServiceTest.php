@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace doganoo\DI\Test\Object\Float;
 
-use doganoo\DI\Object\Float\IFloatService;
+use doganoo\DI\Object\Float\FloatServiceInterface;
 use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\Object\Float\FloatService;
 
@@ -27,7 +27,7 @@ use doganoo\DIP\Object\Float\FloatService;
  */
 class FloatServiceTest extends TestCase {
 
-    private IFloatService $floatService;
+    private FloatServiceInterface $floatService;
 
     protected function setUp(): void {
         parent::setUp();

@@ -26,7 +26,7 @@ declare(strict_types=1);
 
 namespace doganoo\DI\Test\Object\String;
 
-use doganoo\DI\Object\String\IStringService;
+use doganoo\DI\Object\String\StringServiceInterface;
 use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\Object\String\StringService;
 
@@ -38,7 +38,7 @@ use doganoo\DIP\Object\String\StringService;
  */
 class StringServiceTest extends TestCase {
 
-    /** @var IStringService */
+    /** @var StringServiceInterface */
     private $stringService;
 
     /**
@@ -170,15 +170,15 @@ class StringServiceTest extends TestCase {
     public function getIntersection(): array {
         return [
             ["abcde", "bc", "bc"],
-//            ["abcde", "ab", "ab"],
-//            ["abcde", "a", "a"],
-//            ["abcde", "e", "e"],
-//            ["abcde", "cde", "cde"],
-//            ["abcde", "de", "de"],
-//            ["abcde", "abcde", "abcde"],
-//            ["abcde", "dgrdgsgrdfgdsf", ""],
-//            ["abcde", "sdgeagasfasef", ""],
-//            ["abcde", "", ""],
+            //            ["abcde", "ab", "ab"],
+            //            ["abcde", "a", "a"],
+            //            ["abcde", "e", "e"],
+            //            ["abcde", "cde", "cde"],
+            //            ["abcde", "de", "de"],
+            //            ["abcde", "abcde", "abcde"],
+            //            ["abcde", "dgrdgsgrdfgdsf", ""],
+            //            ["abcde", "sdgeagasfasef", ""],
+            //            ["abcde", "", ""],
         ];
     }
 

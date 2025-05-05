@@ -21,13 +21,13 @@ declare(strict_types=1);
 
 namespace doganoo\DI\Test\Email;
 
-use doganoo\DI\Email\IEmailService;
+use doganoo\DI\Email\EmailServiceInterface;
 use doganoo\DI\Test\Suite\TestCase;
 use doganoo\DIP\Email\EmailService;
 
 class EmailServiceTest extends TestCase {
 
-    private IEmailService $emailService;
+    private EmailServiceInterface $emailService;
 
     protected function setUp(): void {
         parent::setUp();

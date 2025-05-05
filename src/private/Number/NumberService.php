@@ -21,9 +21,9 @@ declare(strict_types=1);
 
 namespace doganoo\DIP\Number;
 
-use doganoo\DI\Number\INumberService;
+use doganoo\DI\Number\NumberServiceInterface;
 
-class NumberService implements INumberService {
+class NumberService implements NumberServiceInterface {
 
     public function isZero(float $value, float $epsilon = 0.00001): bool {
         return abs($value - 0) < $epsilon;
