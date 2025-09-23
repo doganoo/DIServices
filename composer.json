@@ -47,6 +47,9 @@
     "phpstan-baseline": "cd vendor/bin && ./phpstan analyse -c ../../config/phpstan/phpstan.neon ../../apps/ ../../lib --level 8 --memory-limit=2G --generate-baseline ../../config/phpstan/baseline.neon",
     "test": "./vendor/bin/phpunit test/ --configuration test/phpunit.xml --verbose"
   },
+  "conflict": {
+    "laminas/laminas-crypt": "*"
+  },
   "config": {
     "allow-plugins": {
       "ergebnis/composer-normalize": true
